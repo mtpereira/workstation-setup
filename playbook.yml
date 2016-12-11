@@ -1,0 +1,109 @@
+---
+- name: Workstation setup
+  hosts: localhost
+
+  vars:
+    golang_version: "1.7.4"
+    golang_os: "{{ ansible_system | lower }}"
+    golang_arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', ansible_architecture) }}"
+    chrome_repo: "deb https://dl.google.com/linux/chrome/deb/ stable main"
+
+  tasks:
+    - name: Check if Google Chrome is installed
+      command: dpkg-query -W -f='${db:Status-Status}' google-chrome-stable
+      register: chrome_status
+
+    - block:
+      - name: Add Google Chrome repository key
+        apt_key:
+          url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+          state: present
+        become: yes
+
+      - name: Add Google Chrome repository
+        apt_repository:
+          repo: "{{ chrome_repo }}"
+          state: present
+        become: yes
+      when: chrome_status.stdout.find('installed')
+
+    - name: Install packages
+      apt:
+        pkg: "{{ item }}"
+        update_cache: yes
+        cache_valid_time: 3600
+        state: installed
+      with_items:
+        - google-chrome-stable
+        - vim-nox
+        - git
+        - zsh
+        - aspell
+        - coreutils
+        - build-essential
+        - dos2unix
+        - htop
+        - mpd
+        - mpc
+        - ncmpcpp
+        - i3-wm
+        - i3status
+        - i3lock
+        - dmenu
+        - feh
+        - tmux
+        - wget
+        - curl
+        - vagrant
+        - vlc
+        - cmake
+        - python-pip
+        - python-dev
+        - libpython-dev
+        - keychain
+        - fonts-hack-ttf
+        - rxvt-unicode-256color
+        - nautilus-dropbox
+        - wicd-gtk
+        - scrot
+        - nmap
+        - netcat-openbsd
+      become: yes
+
+    - name: Remove Google Chrome repository since it's installed by the package
+      apt_repository:
+        repo: "{{ chrome_repo }}"
+        state: absent
+      become: yes
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Create directories
+      file:
+        dest: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ ansible_user_dir }}/bin"
+        - "{{ ansible_user_dir }}/scripts"
+
+    - name: Install golang
+      unarchive:
+        src: "https://storage.googleapis.com/golang/go{{ golang_version }}.{{ golang_os }}-{{ golang_arch}}.tar.gz"
+        dest: "{{ ansible_user_dir }}/bin"
+        remote_src: yes
+        creates: "{{ ansible_user_dir }}/bin/go/bin/go"
+
+
+# TODO
+# - Add ohmyzsh
+# - Add powerline fonts https://github.com/powerline/fonts
+# - Add vpn script
+# - Fix fonts on i3 (persistent xset)
+# - Fix fonts on urxvt
+# - Add automount of USB volumes
+# - Fix bash_+ naming
+# - Install pip and pip packages
+
