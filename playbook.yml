@@ -7,6 +7,14 @@
     golang_os: "{{ ansible_system | lower }}"
     golang_arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', ansible_architecture) }}"
     chrome_repo: "deb https://dl.google.com/linux/chrome/deb/ stable main"
+    wallpaper_path: "{{ ansible_user_dir }}/Pictures/wallpaper.png"
+    xinitrc_commands:
+      - xset +fp $HOME/.local/share/fonts
+      - $HOME/.fehbg
+      - i3
+    pip_packages:
+      - ansible
+      - boto3
 
   tasks:
     - name: Check if Google Chrome is installed
@@ -42,6 +50,8 @@
         - coreutils
         - build-essential
         - dos2unix
+        - unzip
+        - unrar
         - htop
         - mpd
         - mpc
@@ -55,6 +65,7 @@
         - wget
         - curl
         - vagrant
+        - virtualbox
         - vlc
         - cmake
         - python-pip
@@ -68,6 +79,8 @@
         - scrot
         - nmap
         - netcat-openbsd
+      environment:
+        DEBIAN_FRONTEND: noninteractive
       become: yes
 
     - name: Remove Google Chrome repository since it's installed by the package
@@ -96,6 +109,16 @@
         remote_src: yes
         creates: "{{ ansible_user_dir }}/bin/go/bin/go"
 
+    - name: Setup wallpaper with feh
+      command: feh --bg-fill {{ wallpaper_path }}
+      args:
+        creates: "{{ ansible_user_dir }}/.fehbg"
+
+    - name: Create .xinitrc
+      template:
+        src: templates/xinitrc.j2
+        dest: "{{ ansible_user_dir }}/.xinitrc"
+        mode: 0644
 
 # TODO
 # - Add ohmyzsh
@@ -106,4 +129,5 @@
 # - Add automount of USB volumes
 # - Fix bash_+ naming
 # - Install pip and pip packages
+# - Install and configure minikube
 
