@@ -20,6 +20,7 @@
   tasks:
     - name: Check if Google Chrome is installed
       command: dpkg-query -W -f='${db:Status-Status}' google-chrome-stable
+      changed_when: false
       register: chrome_status
 
     - block:
@@ -88,12 +89,14 @@
       apt_repository:
         repo: "{{ chrome_repo }}"
         state: absent
+      register: chrome_remove_repo
       become: yes
 
     - name: Update apt cache
       apt:
         update_cache: yes
       become: yes
+      when: chrome_remove_repo.changed
 
     - name: Create directories
       file:
