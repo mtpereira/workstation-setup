@@ -9,6 +9,7 @@
     chrome_repo: "deb https://dl.google.com/linux/chrome/deb/ stable main"
     wallpaper_path: "{{ ansible_user_dir }}/Pictures/wallpaper.png"
     xinitrc_commands:
+      - setxkbmap -layout gb,pt -option grp:shifts_toggle
       - xset +fp $HOME/.local/share/fonts
       - $HOME/.fehbg
       - i3
