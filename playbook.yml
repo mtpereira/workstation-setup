@@ -9,10 +9,11 @@
     chrome_repo: "deb https://dl.google.com/linux/chrome/deb/ stable main"
     wallpaper_path: "{{ ansible_user_dir }}/Pictures/wallpaper.png"
     xinitrc_commands:
-      - setxkbmap -layout gb,pt -option grp:shifts_toggle
-      - xset +fp $HOME/.local/share/fonts
-      - $HOME/.fehbg
       - i3
+      - setxkbmap -layout gb,pt -option grp:shifts_toggle
+      - "xmodmap {{ ansible_user_dir }}/.Xmodmap"
+      - "xset +fp {{ ansible_user_dir }}/.local/share/fonts"
+      - "/bin/sh {{ ansible_user_dir }}/.fehbg"
     pip_packages:
       - ansible
       - boto3
@@ -115,8 +116,6 @@
 
     - name: Setup wallpaper with feh
       command: feh --bg-fill {{ wallpaper_path }}
-      args:
-        creates: "{{ ansible_user_dir }}/.fehbg"
 
     - name: Create .xinitrc
       template:
