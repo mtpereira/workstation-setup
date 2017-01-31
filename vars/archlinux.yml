@@ -1,0 +1,42 @@
+---
+vconsole_font: "ter-u32b"
+vconsole_keymap: "uk"
+packages:
+  - vim
+  - git
+  - zsh
+  - aspell
+  - aspell-pt
+  - coreutils
+  - dos2unix
+  - unzip
+  - unrar
+  - htop
+  - mpd
+  - mpc
+  - ncmpcpp
+  - i3-wm
+  - i3status
+  - i3lock
+  - dmenu
+  - feh
+  - tmux
+  - wget
+  - curl
+  - vagrant
+  - virtualbox
+  - vlc
+  - cmake
+  - python
+  - python-pip
+  - keychain
+  - ttf-hack
+  - rxvt-unicode
+  - scrot
+  - nmap
+  - openbsd-netcat
+  - wpa_actiond
+  - dhclient
+  - xorg-server
+  - lightdm
+
