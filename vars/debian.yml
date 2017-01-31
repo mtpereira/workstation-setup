@@ -1,0 +1,6 @@
+---
+chrome_repo: "deb https://dl.google.com/linux/chrome/deb/ stable main"
+golang_version: "1.7.4"
+golang_os: "{{ ansible_system | lower }}"
+golang_arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', ansible_architecture) }}"
+
