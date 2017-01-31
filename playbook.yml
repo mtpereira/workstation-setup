@@ -17,14 +17,20 @@
         - "{{ ansible_user_dir }}/bin"
         - "{{ ansible_user_dir }}/scripts"
 
-    - name: Setup wallpaper with feh
-      command: feh --bg-fill {{ wallpaper_path }}
-
     - name: Create .xinitrc
       template:
         src: templates/xinitrc.j2
         dest: "{{ ansible_user_dir }}/.xinitrc"
         mode: 0644
+
+    - name: Copy wallpaper
+      copy:
+        src: files/wallpaper.png
+        dest: "{{ wallpaper_path }}"
+        mode: 0644
+
+    - name: Setup wallpaper with feh
+      command: feh --bg-fill {{ wallpaper_path }}
 
 # TODO
 # - Add ohmyzsh

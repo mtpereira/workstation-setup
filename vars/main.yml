@@ -1,5 +1,5 @@
 ---
-wallpaper_path: "{{ ansible_user_dir }}/Pictures/wallpaper.png"
+wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
 xinitrc_commands:
   - i3
   - setxkbmap -layout gb,pt -option grp:shifts_toggle
