@@ -2,8 +2,9 @@
 - name: Workstation setup
   hosts: localhost
 
-  vars:
-    include_vars: "vars/{{ ansible_os_family | lower }}.yml"
+  vars_files:
+    - vars/main.yml
+    - "vars/{{ ansible_os_family | lower }}.yml"
 
   tasks:
     - include: "tasks/{{ ansible_os_family | lower }}.yml"
