@@ -1,0 +1,59 @@
+---
+- name: Check if Google Chrome is installed
+  command: dpkg-query -W -f='${db:Status-Status}' google-chrome-stable
+  changed_when: false
+  register: chrome_status
+
+- block:
+  - name: Add Google Chrome repository key
+    apt_key:
+      url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+      state: present
+    become: yes
+
+  - name: Add Google Chrome repository
+    apt_repository:
+      repo: "{{ chrome_repo }}"
+      state: present
+    become: yes
+
+  - name: Install Google Chrome
+    apt:
+      pkg: google-chrome-stable
+      update_cache: yes
+      cache_valid_time: 3600
+      state: installed
+    become: yes
+  when: chrome_status.stdout.find('installed')
+
+- name: Install packages
+  apt:
+    pkg: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: installed
+  with_items: "{{ packages }}"
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  become: yes
+
+- name: Remove Google Chrome repository since it's installed by the package
+  apt_repository:
+    repo: "{{ chrome_repo }}"
+    state: absent
+  register: chrome_remove_repo
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+  when: chrome_remove_repo.changed
+
+- name: Install golang
+  unarchive:
+    src: "https://storage.googleapis.com/golang/go{{ golang_version }}.{{ golang_os }}-{{ golang_arch}}.tar.gz"
+    dest: "{{ ansible_user_dir }}/bin"
+    remote_src: yes
+    creates: "{{ ansible_user_dir }}/bin/go/bin/go"
+
