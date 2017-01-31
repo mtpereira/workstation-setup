@@ -16,6 +16,14 @@
       repo: "{{ chrome_repo }}"
       state: present
     become: yes
+
+  - name: Install Google Chrome
+    apt:
+      pkg: google-chrome-stable
+      update_cache: yes
+      cache_valid_time: 3600
+      state: installed
+    become: yes
   when: chrome_status.stdout.find('installed')
 
 - name: Install packages
@@ -24,46 +32,7 @@
     update_cache: yes
     cache_valid_time: 3600
     state: installed
-  with_items:
-    - google-chrome-stable
-    - vim-nox
-    - git
-    - zsh
-    - aspell
-    - coreutils
-    - build-essential
-    - dos2unix
-    - unzip
-    - unrar
-    - htop
-    - mpd
-    - mpc
-    - ncmpcpp
-    - i3-wm
-    - i3status
-    - i3lock
-    - dmenu
-    - feh
-    - tmux
-    - wget
-    - curl
-    - vagrant
-    - virtualbox
-    - vlc
-    - cmake
-    - python-pip
-    - python-dev
-    - libpython-dev
-    - keychain
-    - fonts-hack-ttf
-    - rxvt-unicode-256color
-    - nautilus-dropbox
-    - wicd-gtk
-    - scrot
-    - nmap
-    - netcat-openbsd
-    - libffi-dev
-    - libssl-dev
+  with_items: "{{ packages }}"
   environment:
     DEBIAN_FRONTEND: noninteractive
   become: yes
