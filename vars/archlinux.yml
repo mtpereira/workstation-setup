@@ -5,6 +5,7 @@ packages:
   - vim
   - git
   - zsh
+  - gnupg
   - aspell
   - aspell-pt
   - coreutils
@@ -36,7 +37,7 @@ packages:
   - nmap
   - openbsd-netcat
   - wpa_actiond
-  - dhcpd
+  - dhcpcd
   - xorg
   - xf86-video-intel
   - lightdm

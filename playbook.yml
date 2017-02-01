@@ -23,6 +23,13 @@
         dest: "{{ ansible_user_dir }}/.xinitrc"
         mode: 0644
 
+    - name: Copy xorg keyboard rules
+      copy:
+        src: files/00-keyboard.conf
+        dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+        mode: 0644
+      become: yes
+
     - name: Install rbenv
       git:
         repo: https://github.com/rbenv/rbenv.git
