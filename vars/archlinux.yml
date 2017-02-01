@@ -37,7 +37,7 @@ packages:
   - openbsd-netcat
   - wpa_actiond
   - dhclient
-  - xorg-server
+  - xorg
   - xf86-video-intel
   - lightdm
   - lightdm-gtk-greeter
