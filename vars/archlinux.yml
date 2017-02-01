@@ -38,5 +38,9 @@ packages:
   - wpa_actiond
   - dhclient
   - xorg-server
+  - xf86-video-intel
   - lightdm
+  - lightdm-gtk-greeter
+  - powertop
+  - acpid
 

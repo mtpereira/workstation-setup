@@ -29,3 +29,9 @@
   with_items: "{{ packages }}"
   become: yes
 
+- name: Enable lightdm
+  systemd:
+    name: lightdm
+    enabled: yes
+  become: yes
+
