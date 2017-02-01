@@ -35,3 +35,10 @@
     enabled: yes
   become: yes
 
+- name: Configure virtualbox modules
+  copy:
+    src: files/virtualbox.conf
+    dest: /etc/modules-load.d/virtualbox.conf
+    mode: 0644
+  become: yes
+
