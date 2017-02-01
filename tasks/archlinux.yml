@@ -29,6 +29,16 @@
   with_items: "{{ packages }}"
   become: yes
 
+- name: Fetch zoom client package
+  get_url:
+    url: https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz
+    dest: /tmp/zoom_x86_64.pkg.tar.xz
+    mode: 0644
+
+- name: Install zoom client
+  command: pacman -U --noconfirm /tmp/zoom_x86_64.pkg.tar.xz
+  become: yes
+
 - name: Enable lightdm
   systemd:
     name: lightdm
