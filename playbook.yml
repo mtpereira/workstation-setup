@@ -30,6 +30,13 @@
         version: master
         accept_hostkey: yes
 
+    - name: Install rbenv
+      git:
+        repo: https://github.com/rbenv/rbenv.git
+        dest: "{{ ansible_user_dir }}/.rbenv"
+        version: master
+        accept_hostkey: yes
+
     - name: Fetch oh-my-zsh installer
       get_url:
         url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
