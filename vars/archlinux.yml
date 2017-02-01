@@ -44,4 +44,5 @@ packages:
   - lightdm-gtk-greeter
   - powertop
   - acpid
+  - go
 
