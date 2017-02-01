@@ -36,7 +36,7 @@ packages:
   - nmap
   - openbsd-netcat
   - wpa_actiond
-  - dhclient
+  - dhcpd
   - xorg
   - xf86-video-intel
   - lightdm

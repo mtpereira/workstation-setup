@@ -23,13 +23,6 @@
         dest: "{{ ansible_user_dir }}/.xinitrc"
         mode: 0644
 
-    - name: Fetch dotfiles
-      git:
-        repo: ssh://git@github.com/mtpereira/dotfiles.git
-        dest: "{{ ansible_user_dir }}/.dotfiles"
-        version: master
-        accept_hostkey: yes
-
     - name: Install rbenv
       git:
         repo: https://github.com/rbenv/rbenv.git
@@ -41,12 +34,19 @@
       get_url:
         url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
         dest: /tmp/oh-my-zsh.sh
-        mode: 0755
+        mode: 0644
 
     - name: Install oh-my-zsh
-      command: /tmp/oh-my-zsh.sh
+      command: sh /tmp/oh-my-zsh.sh
       args:
         creates: "{{ ansible_user_dir }}/.oh-my-zsh"
+
+    - name: Fetch dotfiles
+      git:
+        repo: ssh://git@github.com/mtpereira/dotfiles.git
+        dest: "{{ ansible_user_dir }}/.dotfiles"
+        version: master
+        accept_hostkey: yes
 
     - name: Install dotfiles
       command: "{{ ansible_user_dir }}/.dotfiles/install.sh"
