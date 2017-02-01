@@ -45,4 +45,5 @@ packages:
   - powertop
   - acpid
   - go
+  - keepassx2
 
