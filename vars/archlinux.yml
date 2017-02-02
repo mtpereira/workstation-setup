@@ -46,4 +46,7 @@ packages:
   - acpid
   - go
   - keepassx2
+  - chromium
+  - xsel
+  - acpi
 
