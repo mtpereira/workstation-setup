@@ -54,3 +54,7 @@ packages:
   - ttf-ubuntu-font-family
   - ttf-dejavu
   - ttf-freefont
+  - pulseaudio
+  - pulseaudio-alsa
+  - pamixer
+  - pavucontrol
