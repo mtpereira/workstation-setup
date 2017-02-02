@@ -26,6 +26,7 @@ packages:
   - curl
   - vagrant
   - virtualbox
+  - virtualbox-host-modules-arch
   - vlc
   - cmake
   - python
