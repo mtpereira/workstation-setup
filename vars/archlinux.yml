@@ -1,8 +1,4 @@
 ---
-xinitrc_commands:
-  - xrdb -merge ~/.Xresources
-  - i3
-  - "/bin/sh {{ ansible_user_dir }}/.fehbg"
 vconsole_font: "ter-u32b"
 vconsole_keymap: "uk"
 packages:

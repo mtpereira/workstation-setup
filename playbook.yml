@@ -17,10 +17,10 @@
         - "{{ ansible_user_dir }}/bin"
         - "{{ ansible_user_dir }}/scripts"
 
-    - name: Create .xinitrc
+    - name: Create .xsession
       template:
-        src: templates/xinitrc.j2
-        dest: "{{ ansible_user_dir }}/.xinitrc"
+        src: templates/xsession.j2
+        dest: "{{ ansible_user_dir }}/.xsession"
         mode: 0644
 
     - name: Copy xorg keyboard rules
