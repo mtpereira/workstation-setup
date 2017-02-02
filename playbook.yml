@@ -21,7 +21,7 @@
       template:
         src: templates/xsession.j2
         dest: "{{ ansible_user_dir }}/.xsession"
-        mode: 0644
+        mode: 0755
 
     - name: Copy xorg keyboard rules
       copy:

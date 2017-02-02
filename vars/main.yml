@@ -3,7 +3,7 @@ wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
 xsession_commands:
   - xrdb -load "{{ ansible_user_dir }}/.Xresources"
   - feh --bg-fill "{{ wallpaper_path }}"
-  - i3
+  - exec i3
 pip_packages:
   - ansible
   - boto3

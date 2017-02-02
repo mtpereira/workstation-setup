@@ -1,4 +1,6 @@
+#!/bin/sh
+
 {% for command in xsession_commands %}
-exec {{ command }}
+{{ command }}
 {% endfor %}
 
