@@ -50,4 +50,7 @@ packages:
   - chromium
   - xsel
   - acpi
-
+  - adobe-source-sans-pro-fonts
+  - ttf-ubuntu-font-family
+  - ttf-dejavu
+  - ttf-freefont
