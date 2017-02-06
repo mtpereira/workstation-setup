@@ -75,6 +75,12 @@
         dest: "{{ ansible_user_dir }}/bin/kubectl"
         mode: 0755
 
+    - name: Install minikube
+      get_url:
+        url: "https://storage.googleapis.com/minikube/releases/{{ minikube_version }}/minikube-linux-amd64"
+        dest: "{{ ansible_user_dir }}/bin/minikube"
+        mode: 0755
+
     - name: Fetch dotfiles
       git:
         repo: ssh://git@github.com/mtpereira/dotfiles.git
@@ -97,5 +103,4 @@
 # TODO
 # - Add powerline fonts https://github.com/powerline/fonts
 # - Fix bash_+ naming
-# - Install and configure minikube
 
