@@ -69,6 +69,12 @@
       args:
         creates: "{{ ansible_user_dir }}/.oh-my-zsh"
 
+    - name: Install kubectl
+      get_url:
+        url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
+        dest: "{{ ansible_user_dir }}/bin/kubectl"
+        mode: 0755
+
     - name: Fetch dotfiles
       git:
         repo: ssh://git@github.com/mtpereira/dotfiles.git
@@ -89,14 +95,7 @@
       command: feh --bg-fill {{ wallpaper_path }}
 
 # TODO
-# - Add ohmyzsh
 # - Add powerline fonts https://github.com/powerline/fonts
-# - Add vpn script
-# - Fix fonts on i3 (persistent xset)
-# - Fix fonts on urxvt
-# - Add automount of USB volumes
 # - Fix bash_+ naming
-# - Install pip and pip packages
 # - Install and configure minikube
-# - Install and configure kubelet
 
