@@ -60,4 +60,6 @@ packages:
   - pavucontrol
   - libvdpau-va-gl
   - imagemagick
+  - pkgfile
+  - postgresql-libs
 
