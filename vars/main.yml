@@ -8,4 +8,6 @@ pip_packages:
   - ansible
   - boto3
   - virtualenv
+  - httpie
+  - awscli
 

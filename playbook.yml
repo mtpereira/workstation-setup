@@ -9,6 +9,13 @@
   tasks:
     - include: "tasks/{{ ansible_os_family | lower }}.yml"
 
+    - name: Install pip packages
+      pip:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ pip_packages }}"
+      become: yes
+
     - name: Create directories
       file:
         dest: "{{ item }}"
