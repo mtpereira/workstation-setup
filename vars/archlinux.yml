@@ -58,3 +58,6 @@ packages:
   - pulseaudio-alsa
   - pamixer
   - pavucontrol
+  - libvdpau-va-gl
+  - imagemagick
+
