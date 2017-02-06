@@ -51,6 +51,13 @@
         version: master
         accept_hostkey: yes
 
+    - name: Install rbenv-gemset as a rbenv plugin
+      git:
+        repo: https://github.com/jf/rbenv-gemset.git
+        dest: "{{ ansible_user_dir }}/.rbenv/plugins/rbenv-gemset"
+        version: master
+        accept_hostkey: yes
+
     - name: Fetch oh-my-zsh installer
       get_url:
         url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
