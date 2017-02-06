@@ -23,6 +23,7 @@
       with_items:
         - "{{ ansible_user_dir }}/bin"
         - "{{ ansible_user_dir }}/scripts"
+        - "{{ ansible_user_dir }}/Pictures/screenshots"
 
     - name: Create .xsession
       template:
