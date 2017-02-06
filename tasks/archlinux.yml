@@ -45,3 +45,9 @@
     enabled: yes
   become: yes
 
+- name: Enable devmon from udevil package
+  systemd:
+    name: "devmon@{{ ansible_user_id }}"
+    enabled: yes
+  become: yes
+
