@@ -62,4 +62,5 @@ packages:
   - imagemagick
   - pkgfile
   - postgresql-libs
+  - openvpn
 
