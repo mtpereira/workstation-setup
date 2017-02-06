@@ -56,7 +56,6 @@ packages:
   - ttf-freefont
   - pulseaudio
   - pulseaudio-alsa
-  - pamixer
   - pavucontrol
   - libvdpau-va-gl
   - imagemagick
