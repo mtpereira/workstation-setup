@@ -39,6 +39,27 @@
   command: pacman -U --noconfirm /tmp/zoom_x86_64.pkg.tar.xz
   become: yes
 
+- name: Create mpd directories
+  file:
+    path: "{{ ansible_user_dir }}/.config/mpd/playlists"
+    state: directory
+  tags: mpd
+
+- name: Create mpd configuration file
+  template:
+    src: templates/mpd.conf.j2
+    dest: "{{ ansible_user_dir }}/.config/mpd/mpd.conf"
+    mode: 0644
+  tags: mpd
+
+- name: Enable mpd
+  systemd:
+    name: "mpd"
+    user: yes
+    enabled: yes
+    state: started
+  tags: mpd
+
 - name: Enable lightdm
   systemd:
     name: lightdm
