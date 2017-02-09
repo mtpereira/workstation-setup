@@ -64,4 +64,5 @@ packages:
   - openvpn
   - udevil
   - xorg-xbacklight
+  - net-tools
 
