@@ -65,4 +65,5 @@ packages:
   - udevil
   - xorg-xbacklight
   - net-tools
+  - bind-tools
 
