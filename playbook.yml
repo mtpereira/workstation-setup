@@ -38,6 +38,13 @@
         mode: 0644
       become: yes
 
+    - name: Copy xorg touchpad rules
+      copy:
+        src: files/00-touchpad.conf
+        dest: /etc/X11/xorg.conf.d/00-touchpad.conf
+        mode: 0644
+      become: yes
+
     - name: Install rbenv
       git:
         repo: https://github.com/rbenv/rbenv.git
