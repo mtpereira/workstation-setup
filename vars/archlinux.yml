@@ -67,4 +67,5 @@ packages:
   - xorg-xbacklight
   - net-tools
   - bind-tools
+  - lsof
 
