@@ -9,6 +9,13 @@
   tasks:
     - include: "tasks/{{ ansible_os_family | lower }}.yml"
 
+    - name: Add user to docker group
+      user:
+        name: "{{ ansible_user_id }}"
+        groups: docker
+        append: yes
+      become: yes
+
     - name: Install pip packages
       pip:
         name: "{{ item }}"
