@@ -29,6 +29,7 @@
         state: directory
       with_items:
         - "{{ ansible_user_dir }}/bin"
+        - "{{ ansible_user_dir }}/go"
         - "{{ ansible_user_dir }}/scripts"
         - "{{ ansible_user_dir }}/Pictures/screenshots"
 
