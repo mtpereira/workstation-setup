@@ -68,4 +68,5 @@ packages:
   - net-tools
   - bind-tools
   - lsof
+  - docker
 
