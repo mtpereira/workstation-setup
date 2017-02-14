@@ -76,11 +76,3 @@
     state: started
   become: yes
 
-- name: Enable docker
-  systemd:
-    name: docker
-    enabled: yes
-    state: started
-  become: yes
-  tags: run
-
