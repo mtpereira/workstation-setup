@@ -69,4 +69,5 @@ packages:
   - bind-tools
   - lsof
   - docker
+  - mtr
 
