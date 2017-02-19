@@ -70,4 +70,5 @@ packages:
   - lsof
   - docker
   - mtr
+  - the_silver_searcher
 
