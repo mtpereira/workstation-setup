@@ -76,3 +76,13 @@
     state: started
   become: yes
 
+- name: Disable wall messages from systemd ask password tool
+  systemd:
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  with_items:
+    - systemd-ask-password-wall.service
+    - systemd-ask-password-wall.path
+  become: yes
+
