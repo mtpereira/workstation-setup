@@ -73,4 +73,5 @@ packages:
   - the_silver_searcher
   - dunst
   - libnotify
+  - rsync
 
