@@ -75,4 +75,7 @@ packages:
   - libnotify
   - rsync
   - glide
+  - mercurial
+  - lftp
+  - arandr
 
