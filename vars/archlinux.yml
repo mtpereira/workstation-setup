@@ -62,7 +62,6 @@ packages:
   - imagemagick
   - pkgfile
   - postgresql-libs
-  - openvpn
   - udevil
   - xorg-xbacklight
   - net-tools
