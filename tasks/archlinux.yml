@@ -1,26 +1,4 @@
 ---
-- name: Create vconsole.conf
-  template:
-    src: templates/vconsole.conf.j2
-    dest: /etc/vconsole.conf
-    mode: 0644
-  become: yes
-
-- name: Get mirrorlist
-  uri:
-    url: https://www.archlinux.org/mirrorlist/
-    method: POST
-    body: "country=all&protocol=https&ip_version=4&use_mirror_status=on"
-    return_content: yes
-  register: pacman_mirrorlist
-
-- name: Create mirrorlist
-  copy:
-    content: "{{ pacman_mirrorlist.content | regex_replace('#Server =', 'Server =') }}"
-    dest: /etc/pacman.d/mirrorlist
-    mode: 0644
-  become: yes
-
 - name: Install packages
   pacman:
     name: "{{ item }}"

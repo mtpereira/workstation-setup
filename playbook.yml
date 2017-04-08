@@ -6,6 +6,10 @@
     - vars/main.yml
     - "vars/{{ ansible_os_family | lower }}.yml"
 
+  roles:
+    - role: configuration
+      tags: configuration
+
   tasks:
     - include: "tasks/{{ ansible_os_family | lower }}.yml"
 
@@ -32,26 +36,6 @@
         - "{{ ansible_user_dir }}/go"
         - "{{ ansible_user_dir }}/scripts"
         - "{{ ansible_user_dir }}/Pictures/screenshots"
-
-    - name: Create .xsession
-      template:
-        src: templates/xsession.j2
-        dest: "{{ ansible_user_dir }}/.xsession"
-        mode: 0755
-
-    - name: Copy xorg keyboard rules
-      copy:
-        src: files/00-keyboard.conf
-        dest: /etc/X11/xorg.conf.d/00-keyboard.conf
-        mode: 0644
-      become: yes
-
-    - name: Copy xorg touchpad rules
-      copy:
-        src: files/00-touchpad.conf
-        dest: /etc/X11/xorg.conf.d/00-touchpad.conf
-        mode: 0644
-      become: yes
 
     - name: Install rbenv
       git:
@@ -96,25 +80,6 @@
         url: "https://storage.googleapis.com/minikube/releases/{{ minikube_version }}/minikube-linux-amd64"
         dest: "{{ ansible_user_dir }}/bin/minikube"
         mode: 0755
-
-    - name: Fetch dotfiles
-      git:
-        repo: ssh://git@github.com/mtpereira/dotfiles.git
-        dest: "{{ ansible_user_dir }}/.dotfiles"
-        version: master
-        accept_hostkey: yes
-
-    - name: Install dotfiles
-      command: "{{ ansible_user_dir }}/.dotfiles/install.sh"
-
-    - name: Copy wallpaper
-      copy:
-        src: files/wallpaper.png
-        dest: "{{ wallpaper_path }}"
-        mode: 0644
-
-    - name: Setup wallpaper with feh
-      command: feh --bg-fill {{ wallpaper_path }}
 
 # TODO
 # - Add powerline fonts https://github.com/powerline/fonts

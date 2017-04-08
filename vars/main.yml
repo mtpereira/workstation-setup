@@ -1,9 +1,10 @@
 ---
-wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
-xsession_commands:
+configuration_wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
+configuration_xsession_commands:
   - xrdb -load "{{ ansible_user_dir }}/.Xresources"
-  - feh --bg-fill "{{ wallpaper_path }}"
+  - feh --bg-fill "{{ configuration_wallpaper_path }}"
   - exec i3
+
 pip_packages:
   - ansible
   - boto3

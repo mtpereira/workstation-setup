@@ -1,6 +1,7 @@
 ---
-vconsole_font: "ter-u32b"
-vconsole_keymap: "uk"
+configuration_vconsole_font: "ter-u32b"
+configuration_vconsole_keymap: "uk"
+
 packages:
   - vim
   - git

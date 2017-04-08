@@ -1,0 +1,71 @@
+---
+- name: Configure .xsession
+  template:
+    src: templates/xsession.j2
+    dest: "{{ ansible_user_dir }}/.xsession"
+    mode: 0755
+
+- name: Configure xorg keyboard rules
+  copy:
+    src: files/00-keyboard.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+    mode: 0644
+  become: yes
+
+- name: Configure xorg touchpad rules
+  copy:
+    src: files/00-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/00-touchpad.conf
+    mode: 0644
+  become: yes
+
+- name: Configure logind
+  copy:
+    src: files/logind.conf
+    dest: /etc/systemd/logind.conf
+    mode: 0644
+  become: yes
+
+- name: Fetch dotfiles
+  git:
+    repo: ssh://git@github.com/mtpereira/dotfiles.git
+    dest: "{{ ansible_user_dir }}/.dotfiles"
+    version: master
+    accept_hostkey: yes
+
+- name: Install dotfiles
+  command: "{{ ansible_user_dir }}/.dotfiles/install.sh"
+
+- name: Copy wallpaper
+  copy:
+    src: files/wallpaper.png
+    dest: "{{ configuration_wallpaper_path }}"
+    mode: 0644
+
+- name: Configure wallpaper with feh
+  command: feh --bg-fill {{ configuration_wallpaper_path }}
+
+- name: Configure vconsole.conf
+  template:
+    src: templates/vconsole.conf.j2
+    dest: /etc/vconsole.conf
+    mode: 0644
+  become: yes
+
+- block:
+  - name: Get mirrorlist
+    uri:
+      url: https://www.archlinux.org/mirrorlist/
+      method: POST
+      body: "country=all&protocol=https&ip_version=4&use_mirror_status=on"
+      return_content: yes
+    register: pacman_mirrorlist
+
+  - name: Configure mirrorlist
+    copy:
+      content: "{{ pacman_mirrorlist.content | regex_replace('#Server =', 'Server =') }}"
+      dest: /etc/pacman.d/mirrorlist
+      mode: 0644
+    become: yes
+  when: ansible_distribution == "Archlinux"
+
