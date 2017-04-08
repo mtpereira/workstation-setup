@@ -9,6 +9,8 @@
   roles:
     - role: configuration
       tags: configuration
+    - role: dotfiles
+      tags: dotfiles
 
   tasks:
     - include: "tasks/{{ ansible_os_family | lower }}.yml"

@@ -26,16 +26,6 @@
     mode: 0644
   become: yes
 
-- name: Fetch dotfiles
-  git:
-    repo: ssh://git@github.com/mtpereira/dotfiles.git
-    dest: "{{ ansible_user_dir }}/.dotfiles"
-    version: master
-    accept_hostkey: yes
-
-- name: Install dotfiles
-  command: "{{ ansible_user_dir }}/.dotfiles/install.sh"
-
 - name: Copy wallpaper
   copy:
     src: files/wallpaper.png
