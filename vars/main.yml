@@ -14,3 +14,13 @@ pip_packages:
 kubectl_version: "v1.5.2"
 minikube_version: "v0.17.1"
 
+firewall_allowed_tcp_ports: []
+firewall_allowed_udp_ports: []
+firewall_forwarded_tcp_ports: []
+firewall_forwarded_udp_ports: []
+firewall_additional_rules: []
+firewall_ip6_additional_rules: []
+firewall_log_dropped_packets: no
+firewall_disable_firewalld: yes
+firewall_disable_ufw: yes
+

@@ -11,6 +11,9 @@
       tags: configuration
     - role: dotfiles
       tags: dotfiles
+    - role: firewall
+      become: yes
+      tags: firewall
 
   tasks:
     - include: "tasks/{{ ansible_os_family | lower }}.yml"
