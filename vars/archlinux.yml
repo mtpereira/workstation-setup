@@ -8,6 +8,7 @@ packages:
   - zsh
   - gnupg
   - aspell
+  - aspell-en
   - aspell-pt
   - coreutils
   - dos2unix
