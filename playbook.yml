@@ -89,4 +89,5 @@
 # TODO
 # - Add powerline fonts https://github.com/powerline/fonts
 # - Fix bash_+ naming
+# - Add fstrim.timer service
 

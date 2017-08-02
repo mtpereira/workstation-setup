@@ -60,7 +60,6 @@ packages:
   - pulseaudio
   - pulseaudio-alsa
   - pavucontrol
-  - libvdpau-va-gl
   - imagemagick
   - pkgfile
   - postgresql-libs
@@ -79,4 +78,5 @@ packages:
   - mercurial
   - lftp
   - arandr
+  - libva-intel-driver
 
