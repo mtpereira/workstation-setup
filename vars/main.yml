@@ -13,8 +13,8 @@ pip_packages:
   - awscli
   - jedi
   - pylint
-kubectl_version: "v1.7.6"
-minikube_version: "v0.22.1"
+kubectl_version: "v1.8.2"
+minikube_version: "v0.22.3"
 
 firewall_allowed_tcp_ports: []
 firewall_allowed_udp_ports: []
