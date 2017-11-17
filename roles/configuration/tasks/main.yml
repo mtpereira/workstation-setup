@@ -57,7 +57,7 @@
     uri:
       url: https://www.archlinux.org/mirrorlist/
       method: POST
-      body: "country=all&protocol=https&ip_version=4&use_mirror_status=on"
+      body: "country=PT&country=SE&country=GB&protocol=https&ip_version=4&use_mirror_status=on"
       return_content: yes
     register: pacman_mirrorlist
 
