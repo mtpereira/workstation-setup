@@ -4,9 +4,10 @@
 
   vars_files:
     - vars/main.yml
-    - vars/archlinux.yml
 
   roles:
+    - role: install
+      tags: install
     - role: configuration
       tags: configuration
     - role: dotfiles
@@ -14,77 +15,6 @@
     - role: firewall
       become: yes
       tags: firewall
-
-  tasks:
-    - include_tasks: "tasks/{{ ansible_os_family | lower }}.yml"
-
-    - name: Add user to docker group
-      user:
-        name: "{{ ansible_user_id }}"
-        groups: docker
-        append: yes
-      become: yes
-
-    - name: Install pip packages
-      pip:
-        name: "{{ item }}"
-        state: present
-      with_items: "{{ pip_packages }}"
-      become: yes
-
-    - name: Create directories
-      file:
-        dest: "{{ item }}"
-        state: directory
-      with_items:
-        - "{{ ansible_user_dir }}/bin"
-        - "{{ ansible_user_dir }}/go"
-        - "{{ ansible_user_dir }}/scripts"
-        - "{{ ansible_user_dir }}/Pictures/screenshots"
-
-    - name: Install rbenv
-      git:
-        repo: https://github.com/rbenv/rbenv.git
-        dest: "{{ ansible_user_dir }}/.rbenv"
-        version: master
-        accept_hostkey: yes
-
-    - name: Install ruby-build as a rbenv plugin
-      git:
-        repo: https://github.com/rbenv/ruby-build.git
-        dest: "{{ ansible_user_dir }}/.rbenv/plugins/ruby-build"
-        version: master
-        accept_hostkey: yes
-
-    - name: Install rbenv-gemset as a rbenv plugin
-      git:
-        repo: https://github.com/jf/rbenv-gemset.git
-        dest: "{{ ansible_user_dir }}/.rbenv/plugins/rbenv-gemset"
-        version: master
-        accept_hostkey: yes
-
-    - name: Fetch oh-my-zsh installer
-      get_url:
-        url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-        dest: /tmp/oh-my-zsh.sh
-        mode: 0644
-
-    - name: Install oh-my-zsh
-      command: sh /tmp/oh-my-zsh.sh
-      args:
-        creates: "{{ ansible_user_dir }}/.oh-my-zsh"
-
-    - name: Install kubectl
-      get_url:
-        url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
-        dest: "{{ ansible_user_dir }}/bin/kubectl"
-        mode: 0755
-
-    - name: Install minikube
-      get_url:
-        url: "https://storage.googleapis.com/minikube/releases/{{ minikube_version }}/minikube-linux-amd64"
-        dest: "{{ ansible_user_dir }}/bin/minikube"
-        mode: 0755
 
 # TODO
 # - Add powerline fonts https://github.com/powerline/fonts

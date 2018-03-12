@@ -1,4 +1,40 @@
 ---
+- name: Create directories
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items: "{{ configuration_user_dirs }}
+
+- name: Add user to docker group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  become: yes
+
+- name: Enable lightdm
+  systemd:
+    name: lightdm
+    enabled: yes
+  become: yes
+
+- name: Enable devmon from udevil package
+  systemd:
+    name: "devmon@{{ ansible_user_id }}"
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Disable wall messages from systemd ask password tool
+  systemd:
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  with_items:
+    - systemd-ask-password-wall.service
+    - systemd-ask-password-wall.path
+  become: yes
+
 - name: Configure .xsession
   template:
     src: templates/xsession.j2
@@ -52,20 +88,26 @@
     - 01-mtp.rules
   become: yes
 
-- block:
-  - name: Get mirrorlist
-    uri:
-      url: https://www.archlinux.org/mirrorlist/
-      method: POST
-      body: "country=PT&protocol=https&ip_version=4&use_mirror_status=on"
-      return_content: yes
-    register: pacman_mirrorlist
+- name: Create mpd directories
+  file:
+    path: "{{ ansible_user_dir }}/.config/mpd/playlists"
+    state: directory
 
-  - name: Configure mirrorlist
-    copy:
-      content: "{{ pacman_mirrorlist.content | regex_replace('#Server =', 'Server =') }}"
-      dest: /etc/pacman.d/mirrorlist
-      mode: 0644
-    become: yes
-  when: ansible_distribution == "Archlinux"
+- name: Create mpd configuration file
+  template:
+    src: templates/mpd.conf.j2
+    dest: "{{ ansible_user_dir }}/.config/mpd/mpd.conf"
+    mode: 0644
 
+- name: Enable mpd
+  systemd:
+    name: "mpd"
+    user: yes
+    enabled: yes
+    state: started
+
+- name: Configure ncmpcpp
+  template:
+    src: templates/ncmpcpp.config.j2
+    dest: "{{ ansible_user_dir }}/.ncmpcpp/config"
+    mode: 0644
