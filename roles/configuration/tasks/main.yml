@@ -1,0 +1,124 @@
+---
+- name: Create directories
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items: "{{ configuration_user_dirs }}"
+
+- name: Add user to docker group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  become: yes
+
+- name: Enable lightdm
+  systemd:
+    name: lightdm
+    enabled: yes
+  become: yes
+
+- name: Enable devmon from udevil package
+  systemd:
+    name: "devmon@{{ ansible_user_id }}"
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Disable wall messages from systemd ask password tool
+  systemd:
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  with_items:
+    - systemd-ask-password-wall.service
+    - systemd-ask-password-wall.path
+  become: yes
+
+- name: Configure .xsession
+  template:
+    src: templates/xsession.j2
+    dest: "{{ ansible_user_dir }}/.xsession"
+    mode: 0755
+
+- name: Configure xorg keyboard rules
+  copy:
+    src: files/00-keyboard.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+    mode: 0644
+  become: yes
+
+- name: Configure xorg touchpad rules
+  copy:
+    src: files/00-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/00-touchpad.conf
+    mode: 0644
+  become: yes
+
+- name: Configure logind
+  copy:
+    src: files/logind.conf
+    dest: /etc/systemd/logind.conf
+    mode: 0644
+  become: yes
+
+- name: Copy wallpaper
+  copy:
+    src: files/wallpaper.png
+    dest: "{{ configuration_wallpaper_path }}"
+    mode: 0644
+
+- name: Configure vconsole.conf
+  template:
+    src: templates/vconsole.conf.j2
+    dest: /etc/vconsole.conf
+    mode: 0644
+  become: yes
+
+- name: Configure udev for detecting OnePlus X
+  copy:
+    src: "files/{{ item }}"
+    dest: "/etc/udev/rules.d/{{ item }}"
+    mode: 0644
+  with_items:
+    - 00-oneplusx.rules
+    - 01-mtp.rules
+  become: yes
+
+- name: Create mpd directories
+  file:
+    path: "{{ ansible_user_dir }}/.config/mpd/playlists"
+    state: directory
+
+- name: Create mpd configuration file
+  template:
+    src: templates/mpd.conf.j2
+    dest: "{{ ansible_user_dir }}/.config/mpd/mpd.conf"
+    mode: 0644
+
+- name: Enable mpd
+  systemd:
+    name: "mpd"
+    user: yes
+    enabled: yes
+    state: started
+
+- name: Configure ncmpcpp
+  block:
+    - file:
+        dest: "{{ ansible_user_dir }}/.ncmpcpp/ }}"
+        mode: 0755
+        state: directory
+
+    - template:
+        src: templates/ncmpcpp.config.j2
+        dest: "{{ ansible_user_dir }}/.ncmpcpp/config"
+        mode: 0644
+
+- name: Configure fstrim service
+  systemd:
+    name: "fstrim.timer"
+    enabled: yes
+    state: started
+  become: yes
+

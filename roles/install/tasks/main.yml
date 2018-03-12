@@ -1,0 +1,63 @@
+---
+- name: Get mirrorlist
+  uri:
+    url: https://www.archlinux.org/mirrorlist/
+    method: POST
+    body: "country=PT&protocol=https&ip_version=4&use_mirror_status=on"
+    return_content: yes
+  register: install_pacman_mirrorlist
+
+- name: Configure mirrorlist
+  copy:
+    content: "{{ install_pacman_mirrorlist.content | regex_replace('#Server =', 'Server =') }}"
+    dest: /etc/pacman.d/mirrorlist
+    mode: 0644
+  become: yes
+
+- name: Install packages
+  pacman:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items: "{{ install_packages }}"
+  become: yes
+
+- name: Install pip packages
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ install_pip_packages }}"
+  become: yes
+
+- name: Install rbenv
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: "{{ ansible_user_dir }}/.rbenv"
+    version: master
+    accept_hostkey: yes
+
+- name: Install ruby-build as a rbenv plugin
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: "{{ ansible_user_dir }}/.rbenv/plugins/ruby-build"
+    version: master
+    accept_hostkey: yes
+
+- name: Install rbenv-gemset as a rbenv plugin
+  git:
+    repo: https://github.com/jf/rbenv-gemset.git
+    dest: "{{ ansible_user_dir }}/.rbenv/plugins/rbenv-gemset"
+    version: master
+    accept_hostkey: yes
+
+- name: Fetch oh-my-zsh installer
+  get_url:
+    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: /tmp/oh-my-zsh.sh
+    mode: 0644
+
+- name: Install oh-my-zsh
+  command: sh /tmp/oh-my-zsh.sh
+  args:
+    creates: "{{ ansible_user_dir }}/.oh-my-zsh"
+

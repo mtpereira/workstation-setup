@@ -4,37 +4,18 @@
 
   vars_files:
     - vars/main.yml
-    - "vars/{{ ansible_os_family | lower }}.yml"
 
-  tasks:
-    - include: "tasks/{{ ansible_os_family | lower }}.yml"
-
-    - name: Create directories
-      file:
-        dest: "{{ item }}"
-        state: directory
-      with_items:
-        - "{{ ansible_user_dir }}/bin"
-        - "{{ ansible_user_dir }}/scripts"
-
-    - name: Setup wallpaper with feh
-      command: feh --bg-fill {{ wallpaper_path }}
-
-    - name: Create .xinitrc
-      template:
-        src: templates/xinitrc.j2
-        dest: "{{ ansible_user_dir }}/.xinitrc"
-        mode: 0644
+  roles:
+    - role: install
+      tags: install
+    - role: configuration
+      tags: configuration
+    - role: dotfiles
+      tags: dotfiles
+    - role: firewall
+      become: yes
+      tags: firewall
 
 # TODO
-# - Add ohmyzsh
 # - Add powerline fonts https://github.com/powerline/fonts
-# - Add vpn script
-# - Fix fonts on i3 (persistent xset)
-# - Fix fonts on urxvt
-# - Add automount of USB volumes
-# - Fix bash_+ naming
-# - Install pip and pip packages
-# - Install and configure minikube
-# - Install and configure kubelet
 

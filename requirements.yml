@@ -1,0 +1,5 @@
+---
+- src: https://github.com/mtpereira/ansible-role-firewall
+  name: firewall
+  version: drop-first
+

@@ -1,13 +1,109 @@
 ---
-wallpaper_path: "{{ ansible_user_dir }}/Pictures/wallpaper.png"
-xinitrc_commands:
-  - i3
-  - setxkbmap -layout gb,pt -option grp:shifts_toggle
-  - "xmodmap {{ ansible_user_dir }}/.Xmodmap"
-  - "xset +fp {{ ansible_user_dir }}/.local/share/fonts"
-  - "/bin/sh {{ ansible_user_dir }}/.fehbg"
-pip_packages:
-  - ansible
-  - boto3
-  - virtualenv
+install_packages:
+  - vim
+  - git
+  - zsh
+  - gnupg
+  - aspell
+  - aspell-en
+  - aspell-pt
+  - coreutils
+  - dos2unix
+  - unzip
+  - unrar
+  - htop
+  - mpd
+  - mpc
+  - ncmpcpp
+  - i3-wm
+  - i3status
+  - i3lock
+  - dmenu
+  - feh
+  - tmux
+  - wget
+  - curl
+  - vagrant
+  - virtualbox
+  - virtualbox-host-modules-arch
+  - vlc
+  - cmake
+  - python
+  - python-pip
+  - keychain
+  - ttf-hack
+  - rxvt-unicode
+  - scrot
+  - nmap
+  - openbsd-netcat
+  - wpa_actiond
+  - dhcpcd
+  - xorg
+  - xf86-video-intel
+  - lightdm
+  - lightdm-gtk-greeter
+  - powertop
+  - acpid
+  - go
+  - keepassx2
+  - chromium
+  - xsel
+  - acpi
+  - adobe-source-sans-pro-fonts
+  - ttf-ubuntu-font-family
+  - ttf-dejavu
+  - ttf-freefont
+  - adobe-source-han-sans-otc-fonts
+  - pulseaudio
+  - pulseaudio-alsa
+  - pavucontrol
+  - imagemagick
+  - pkgfile
+  - postgresql-libs
+  - udevil
+  - xorg-xbacklight
+  - net-tools
+  - bind-tools
+  - lsof
+  - docker
+  - mtr
+  - the_silver_searcher
+  - dunst
+  - libnotify
+  - rsync
+  - glide
+  - mercurial
+  - lftp
+  - arandr
+  - libva-intel-driver
 
+install_pip_packages:
+  - virtualenv
+  - httpie
+  - awscli
+  - jedi
+  - pylint
+
+configuration_user_dirs:
+  - "{{ ansible_user_dir }}/bin"
+  - "{{ ansible_user_dir }}/go"
+  - "{{ ansible_user_dir }}/scripts"
+  - "{{ ansible_user_dir }}/Pictures/screenshots"
+
+configuration_vconsole_font: "ter-u16b"
+configuration_vconsole_keymap: "us"
+configuration_wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
+configuration_xsession_commands:
+  - xrdb -load "{{ ansible_user_dir }}/.Xresources"
+  - feh --bg-fill "{{ configuration_wallpaper_path }}"
+  - exec i3
+
+firewall_allowed_tcp_ports: []
+firewall_allowed_udp_ports: []
+firewall_forwarded_tcp_ports: []
+firewall_forwarded_udp_ports: []
+firewall_additional_rules: []
+firewall_ip6_additional_rules: []
+firewall_log_dropped_packets: no
+firewall_disable_firewalld: yes
+firewall_disable_ufw: yes
