@@ -1,0 +1,11 @@
+---
+aur_dependencies:
+  - base-devel
+  - git
+
+aur_helper_dependencies:
+  yay:
+    - git
+    - go
+    - sudo
+

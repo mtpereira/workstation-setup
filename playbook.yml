@@ -6,6 +6,8 @@
     - vars/main.yml
 
   roles:
+    - role: aur
+      tags: aur
     - role: install
       tags: install
     - role: configuration
