@@ -122,3 +122,17 @@
     state: started
   become: yes
 
+- name: Enable dropbox
+  systemd:
+    name: "dropbox"
+    user: yes
+    enabled: yes
+    state: started
+
+- name: Enable redshift
+  systemd:
+    name: "redshift"
+    user: yes
+    enabled: yes
+    state: enabled
+
