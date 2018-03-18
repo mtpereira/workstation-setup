@@ -1,0 +1,3 @@
+---
+aur_build_dir: "{{ ansible_user_dir }}/.aur"
+aur_helper: yay

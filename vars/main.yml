@@ -77,6 +77,17 @@ install_packages:
   - arandr
   - libva-intel-driver
 
+install_aur_packages:
+  - dropbox
+  - kubectl-bin
+  - kubernetes-helm
+  - minikube
+  - redshift-minimal
+  - restic
+  - tmux-xpanes
+  - visual-studio-code-bin
+  - zoom
+
 install_pip_packages:
   - virtualenv
   - httpie
