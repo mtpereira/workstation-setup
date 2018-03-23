@@ -99,6 +99,7 @@ install_aur_packages:
   - kubectl-bin
   - kubernetes-helm
   - minikube
+  - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
   - tmux-xpanes

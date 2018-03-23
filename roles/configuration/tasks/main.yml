@@ -115,24 +115,30 @@
         dest: "{{ ansible_user_dir }}/.ncmpcpp/config"
         mode: 0644
 
-- name: Configure fstrim service
+- name: Enable dropbox
   systemd:
-    name: "fstrim.timer"
+    name: dropbox
+    user: yes
+    enabled: yes
+    state: started
+
+- name: Enable fstrim service
+  systemd:
+    name: fstrim.timer
     enabled: yes
     state: started
   become: yes
 
-- name: Enable dropbox
+- name: Enable systemd-resolved
   systemd:
-    name: "dropbox"
-    user: yes
+    name: systemd-resolved
     enabled: yes
     state: started
+  become: yes
 
 - name: Enable redshift
   systemd:
-    name: "redshift"
+    name: redshift
     user: yes
     enabled: yes
     state: started
-
