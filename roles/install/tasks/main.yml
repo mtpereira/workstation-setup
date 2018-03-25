@@ -66,4 +66,3 @@
   command: sh /tmp/oh-my-zsh.sh
   args:
     creates: "{{ ansible_user_dir }}/.oh-my-zsh"
-

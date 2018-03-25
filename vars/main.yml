@@ -98,7 +98,7 @@ install_aur_packages:
   - dropbox
   - kubectl-bin
   - kubernetes-helm
-  - minikube
+  - minikube-bin
   - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
