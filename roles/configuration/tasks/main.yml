@@ -136,6 +136,14 @@
     state: started
   become: yes
 
+- name: Configure resolvers from systemd-resolved
+  file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolve.conf
+    force: yes
+    state: link
+  become: yes
+
 - name: Enable redshift
   systemd:
     name: redshift
