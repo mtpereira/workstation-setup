@@ -28,13 +28,6 @@
   with_items: "{{ install_aur_packages }}"
   tags: install_aur
 
-- name: Install pip packages
-  pip:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ install_pip_packages }}"
-  become: yes
-
 - name: Install rbenv
   git:
     repo: https://github.com/rbenv/rbenv.git
