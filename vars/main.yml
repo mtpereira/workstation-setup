@@ -26,6 +26,7 @@ install_packages:
   - glide
   - gnupg
   - go
+  - httpie
   - htop
   - i3lock
   - i3status
@@ -60,7 +61,10 @@ install_packages:
   - pulseaudio
   - pulseaudio-alsa
   - python
+  - python-jedi
   - python-pip
+  - python-pylint
+  - python-virtualenv
   - rsync
   - rxvt-unicode
   - scrot
@@ -96,6 +100,7 @@ install_packages:
   - zsh
 
 install_aur_packages:
+  - aws-cli-git
   - dropbox
   - kubectl-bin
   - kubernetes-helm
@@ -106,13 +111,6 @@ install_aur_packages:
   - tmux-xpanes
   - visual-studio-code-bin
   - zoom
-
-install_pip_packages:
-  - virtualenv
-  - httpie
-  - awscli
-  - jedi
-  - pylint
 
 configuration_user_dirs:
   - "{{ ansible_user_dir }}/bin"
