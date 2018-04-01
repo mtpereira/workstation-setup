@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Spotify
+Comment=Spotify inside a container
+Exec=~/.containers/spotify.sh
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Application;
