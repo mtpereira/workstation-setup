@@ -109,6 +109,7 @@ install_aur_packages:
   - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
+  - signal-desktop-bin
   - tmux-xpanes
   - visual-studio-code-bin
   - zoom
