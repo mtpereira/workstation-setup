@@ -102,6 +102,7 @@ install_packages:
 install_aur_packages:
   - aws-cli-git
   - dropbox
+  - golang-dep
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
