@@ -35,6 +35,7 @@ install_packages:
   - imagemagick
   - inetutils
   - iputils
+  - jq
   - keepassxc
   - keychain
   - lftp
