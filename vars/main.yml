@@ -34,7 +34,7 @@ install_packages:
   - imagemagick
   - inetutils
   - iputils
-  - keepassx2
+  - keepassxc
   - keychain
   - lftp
   - libnotify
