@@ -8,6 +8,7 @@ install_packages:
   - aspell
   - aspell-en
   - aspell-pt
+  - aws-cli
   - bind-tools
   - cmake
   - coreutils
@@ -100,9 +101,8 @@ install_packages:
   - zsh
 
 install_aur_packages:
-  - aws-cli-git
   - dropbox
-  - golang-dep
+  - dep-bin
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
