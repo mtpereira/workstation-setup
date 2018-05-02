@@ -112,6 +112,7 @@ install_aur_packages:
   - redshift-minimal
   - restic
   - signal-desktop-bin
+  - slack-desktop
   - tmux-xpanes
   - visual-studio-code-bin
   - zoom
