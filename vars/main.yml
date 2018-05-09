@@ -113,6 +113,7 @@ install_aur_packages:
   - restic
   - signal-desktop-bin
   - slack-desktop
+  - spotify
   - tmux-xpanes
   - visual-studio-code-bin
   - zoom
