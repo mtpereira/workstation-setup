@@ -150,3 +150,8 @@
     user: yes
     enabled: yes
     state: started
+
+- name: Enable systemd-timesyncd
+  command: timedatectl set-ntp on
+  become: yes
+
