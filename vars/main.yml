@@ -14,6 +14,7 @@ install_packages:
   - coreutils
   - curl
   - dhcpcd
+  - diff-so-fancy
   - dmenu
   - docker
   - docker-compose
@@ -102,6 +103,7 @@ install_packages:
   - zsh
 
 install_aur_packages:
+  - bat-cat-git
   - dropbox
   - dep-bin
   - heroku-cli
