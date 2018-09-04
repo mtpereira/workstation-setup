@@ -104,10 +104,13 @@ install_packages:
 install_aur_packages:
   - dropbox
   - dep-bin
+  - heroku-cli
+  - kops-bin
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
   - minikube-bin
+  - nodejs-serverless
   - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
