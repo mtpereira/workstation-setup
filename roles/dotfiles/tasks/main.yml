@@ -9,6 +9,11 @@
 - name: Install dotfiles
   command: "{{ ansible_user_dir }}/.dotfiles/install.sh"
 
+- name: Create .desktop files directory
+  file:
+    path: "{{ ansible_user_dir }}/.local/share/applications/"
+    state: directory
+
 - name: Copy .desktop files
   synchronize:
     src: "desktop/"
