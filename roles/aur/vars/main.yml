@@ -2,6 +2,7 @@
 aur_dependencies:
   - base-devel
   - git
+  - gnupg
   - yajl
 
 aur_helper_dependencies:
