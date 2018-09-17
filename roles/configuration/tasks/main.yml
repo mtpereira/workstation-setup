@@ -80,16 +80,6 @@
     mode: 0644
   become: yes
 
-- name: Configure udev for detecting OnePlus X
-  copy:
-    src: "files/{{ item }}"
-    dest: "/etc/udev/rules.d/{{ item }}"
-    mode: 0644
-  with_items:
-    - 00-oneplusx.rules
-    - 01-mtp.rules
-  become: yes
-
 - name: Create mpd directories
   file:
     path: "{{ ansible_user_dir }}/.config/mpd/playlists"
