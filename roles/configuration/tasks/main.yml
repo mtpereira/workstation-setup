@@ -5,6 +5,11 @@
     state: directory
   with_items: "{{ configuration_user_dirs }}"
 
+- name: Change user shell
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: "{{ configuration_user_shell }}"
+
 - name: Add user to docker group
   user:
     name: "{{ ansible_user_id }}"
