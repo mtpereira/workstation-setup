@@ -153,3 +153,10 @@
   command: timedatectl set-ntp on
   become: yes
 
+- name: Enable coloured output for pacman tools
+  replace:
+    path: /etc/pacman.conf
+    regexp: '^#Color$'
+    replace: 'Color'
+  become: yes
+  when: configuration_pacman_colour

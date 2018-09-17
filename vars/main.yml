@@ -131,7 +131,7 @@ configuration_user_dirs:
 
 configuration_user_shell: "/bin/zsh"
 configuration_mpd_enabled: no
-
+configuration_pacman_colour: yes
 
 configuration_vconsole_font: "ter-u16b"
 configuration_vconsole_keymap: "us"
