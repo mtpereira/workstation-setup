@@ -26,6 +26,7 @@ install_packages:
   - firefox-i18n-pt-pt
   - git
   - glide
+  - gnome-keyring
   - gnupg
   - go
   - httpie
