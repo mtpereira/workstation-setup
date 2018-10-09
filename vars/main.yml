@@ -36,6 +36,7 @@ install_packages:
   - i3-wm
   - imagemagick
   - inetutils
+  - intellij-idea-community-edition
   - iputils
   - jq
   - keepassxc
@@ -139,7 +140,7 @@ configuration_vconsole_keymap: "us"
 configuration_wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
 configuration_xsession_commands:
   - xrdb -load "{{ ansible_user_dir }}/.Xresources"
-  - feh --bg-fill "{{ configuration_wallpaper_path }}"
+  - feh --bg-max "{{ configuration_wallpaper_path }}"
   - exec i3
 
 firewall_allowed_tcp_ports: []
