@@ -24,6 +24,7 @@ install_packages:
   - firefox
   - firefox-i18n-en-gb
   - firefox-i18n-pt-pt
+  - fzf
   - git
   - glide
   - gnome-keyring
