@@ -9,6 +9,7 @@ install_packages:
   - aspell-en
   - aspell-pt
   - aws-cli
+  - bat
   - bind-tools
   - cmake
   - coreutils
@@ -106,16 +107,16 @@ install_packages:
   - zsh
 
 install_aur_packages:
-  - bat-cat-git
+  - exercism
   - dropbox
   - dep-bin
   - heroku-cli
+  - insomnia
   - kops-bin
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
   - minikube-bin
-  - nodejs-serverless
   - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
