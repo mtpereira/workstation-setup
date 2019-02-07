@@ -127,6 +127,8 @@ install_aur_packages:
   - visual-studio-code-bin
   - zoom
 
+install_ktlint_version: 0.30.0
+
 configuration_user_dirs:
   - "{{ ansible_user_dir }}/bin"
   - "{{ ansible_user_dir }}/go"
