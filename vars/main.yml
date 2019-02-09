@@ -91,6 +91,7 @@ install_packages:
   - unzip
   - vagrant
   - vim
+  - vim-spell-pt
   - virtualbox
   - virtualbox-host-modules-arch
   - vlc
