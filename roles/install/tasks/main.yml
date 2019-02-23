@@ -16,17 +16,15 @@
 
 - name: Install packages
   pacman:
-    name: "{{ item }}"
+    name: "{{ install_packages }}"
     update_cache: yes
     state: present
-  with_items: "{{ install_packages }}"
   become: yes
 
 - name: Install AUR packages
   aur:
     name: "{{ item }}"
   with_items: "{{ install_aur_packages }}"
-  tags: install_aur
 
 - name: Install rbenv
   git:
