@@ -67,6 +67,20 @@
     mode: 0644
   become: yes
 
+- name: Configure systemd
+  block:
+    - name: Create systemd conf directory
+      file:
+        dest: /etc/systemd/system.conf.d
+        state: directory
+
+    - name: Configure timeouts
+      copy:
+        src: files/systemd-timeout.conf
+        dest: /etc/systemd/system.conf.d/00-timeout.conf
+        mode: 0644
+  become: yes
+
 - name: Copy wallpaper
   copy:
     src: files/wallpaper.png
