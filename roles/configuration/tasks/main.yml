@@ -48,14 +48,14 @@
 
 - name: Configure xorg keyboard rules
   copy:
-    src: files/00-keyboard.conf
+    src: files/xorg-keyboard.conf
     dest: /etc/X11/xorg.conf.d/00-keyboard.conf
     mode: 0644
   become: yes
 
 - name: Configure xorg touchpad rules
   copy:
-    src: files/00-touchpad.conf
+    src: files/xorg-touchpad.conf
     dest: /etc/X11/xorg.conf.d/00-touchpad.conf
     mode: 0644
   become: yes
