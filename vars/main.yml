@@ -4,6 +4,7 @@ install_packages:
   - acpid
   - adobe-source-han-sans-otc-fonts
   - adobe-source-sans-pro-fonts
+  - alacritty
   - arandr
   - aspell
   - aspell-en
