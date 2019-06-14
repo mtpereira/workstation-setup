@@ -82,7 +82,7 @@ install_packages:
   - terraform
   - the_silver_searcher
   - tmux
-    traceroute
+  - traceroute
   - ttf-dejavu
   - ttf-freefont
   - ttf-hack
@@ -112,9 +112,6 @@ install_aur_packages:
   - exercism
   - dropbox
   - dep-bin
-  - heroku-cli
-  - insomnia
-  - kops-bin
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
@@ -123,7 +120,6 @@ install_aur_packages:
   - redshift-minimal
   - restic
   - signal-desktop-bin
-  - slack-desktop
   - spotify
   - tmux-xpanes
   - visual-studio-code-bin
