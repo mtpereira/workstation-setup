@@ -13,6 +13,7 @@ install_packages:
   - bat
   - bind-tools
   - cmake
+  - code
   - coreutils
   - curl
   - dhcpcd
@@ -122,7 +123,6 @@ install_aur_packages:
   - signal-desktop-bin
   - spotify
   - tmux-xpanes
-  - visual-studio-code-bin
   - zoom
 
 install_ktlint_version: 0.32.0
