@@ -89,6 +89,7 @@ install_packages:
   - ttf-hack
   - ttf-ubuntu-font-family
   - udevil
+  - ufw
   - unrar
   - unzip
   - vagrant
