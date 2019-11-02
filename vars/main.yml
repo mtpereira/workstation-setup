@@ -23,6 +23,7 @@ install_packages:
   - docker-compose
   - dos2unix
   - dunst
+  - exa
   - feh
   - firefox
   - firefox-i18n-en-gb
