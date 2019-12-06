@@ -199,3 +199,24 @@
         state: enabled
   become: yes
 
+- name: Fix hissing sound from audio jack
+  block:
+    - name: Install amixer
+      pacman:
+        name: alsa-utils
+        state: present
+      become: yes
+
+    - name: Add systemd unit
+      file:
+        src: files/headphones_hissing.service
+        dest: "{{ ansible_user_dir }}/.config/systemd/user/headphones_hissing.service"
+        mode: 0644
+
+    - name: Enable and run unit
+      systemd:
+        name: headphones_hissing
+        state: started
+        enabled: yes
+        scope: user
+        daemon_reload: yes
