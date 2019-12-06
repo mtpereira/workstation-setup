@@ -118,13 +118,18 @@ install_aur_packages:
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
+  - goland
+  - goland-jre
   - minikube-bin
   - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
   - signal-desktop-bin
-  - spotify
+  - slack-desktop
+  - texlive-moderncv-git
   - tmux-xpanes
+  - spotify
+  - yay
   - zoom
 
 install_ktlint_version: 0.32.0
