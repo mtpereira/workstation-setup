@@ -220,3 +220,19 @@
         enabled: yes
         scope: user
         daemon_reload: yes
+
+- name: Configure journald retention policy
+  block:
+    - name: Add configuration file
+      copy:
+        src: files/journald-rotation.conf
+        dest: /etc/systemd/journald.conf.d/rotation.conf
+        mode: 0644
+    
+    - name: Restart journald
+      systemd:
+        name: systemd-journald
+        state: restarted
+        enabled: yes
+        scope: system
+  become: yes
