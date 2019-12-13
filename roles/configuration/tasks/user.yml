@@ -1,0 +1,66 @@
+---
+- name: Create directories
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items: "{{ configuration_user_dirs }}"
+
+- name: Change user shell
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: "{{ configuration_user_shell }}"
+
+- name: Add user to docker group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  become: yes
+
+- name: Configure .xsession
+  template:
+    src: templates/xsession.j2
+    dest: "{{ ansible_user_dir }}/.xsession"
+    mode: 0755
+
+- name: Copy wallpaper
+  copy:
+    src: files/wallpaper.png
+    dest: "{{ configuration_wallpaper_path }}"
+    mode: 0644
+
+- name: Enable dropbox
+  systemd:
+    name: dropbox
+    user: yes
+    enabled: yes
+    state: started
+
+- name: Enable redshift
+  systemd:
+    name: redshift
+    user: yes
+    enabled: yes
+    state: started
+
+- name: Fix hissing sound from audio jack
+  block:
+    - name: Install amixer
+      pacman:
+        name: alsa-utils
+        state: present
+      become: yes
+
+    - name: Add systemd unit
+      file:
+        src: files/headphones_hissing.service
+        dest: "{{ ansible_user_dir }}/.config/systemd/user/headphones_hissing.service"
+        mode: 0644
+
+    - name: Enable and run unit
+      systemd:
+        name: headphones_hissing
+        state: started
+        enabled: yes
+        scope: user
+        daemon_reload: yes

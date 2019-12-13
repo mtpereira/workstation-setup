@@ -1,0 +1,30 @@
+---
+- name: Create mpd directories
+  file:
+    path: "{{ ansible_user_dir }}/.config/mpd/playlists"
+    state: directory
+
+- name: Create mpd configuration file
+  template:
+    src: templates/mpd.conf.j2
+    dest: "{{ ansible_user_dir }}/.config/mpd/mpd.conf"
+    mode: 0644
+
+- name: Enable mpd
+  systemd:
+    name: "mpd"
+    scope: user
+    enabled: yes
+    state: started
+
+- name: Configure ncmpcpp
+  block:
+    - file:
+        dest: "{{ ansible_user_dir }}/.ncmpcpp/"
+        mode: 0755
+        state: directory
+
+    - template:
+        src: templates/ncmpcpp.config.j2
+        dest: "{{ ansible_user_dir }}/.ncmpcpp/config"
+        mode: 0644

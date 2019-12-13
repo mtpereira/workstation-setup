@@ -1,0 +1,39 @@
+---
+- name: Enable systemd-resolved
+  systemd:
+    name: systemd-resolved
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Configure resolvers from systemd-resolved
+  file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolve.conf
+    force: yes
+    state: link
+  become: yes
+
+- name: Disable IPv6
+  sysctl:
+    name: "{{ item }}"
+    value: 1
+    sysctl_file: "/etc/sysctl.d/ipv6.conf"
+    state: present
+    reload: yes
+  with_items:
+    - net.ipv6.conf.all.disable_ipv6
+    - net.ipv6.conf.default.disable_ipv6
+    - net.ipv6.conf.lo.disable_ipv6
+  become: yes
+
+- name: Block incoming connections
+  block:
+    - ufw:
+        state: reset
+    - ufw:
+        default: deny
+        direction: incoming
+        log: no
+        state: enabled
+  become: yes

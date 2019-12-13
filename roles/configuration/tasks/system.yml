@@ -1,0 +1,100 @@
+---
+- name: Enable lightdm
+  systemd:
+    name: lightdm
+    enabled: yes
+  become: yes
+
+- name: Enable devmon from udevil package
+  systemd:
+    name: "devmon@{{ ansible_user_id }}"
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Disable wall messages from systemd ask password tool
+  systemd:
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  with_items:
+    - systemd-ask-password-wall.service
+    - systemd-ask-password-wall.path
+  become: yes
+
+- name: Configure logind
+  copy:
+    src: files/logind.conf
+    dest: /etc/systemd/logind.conf
+    mode: 0644
+  become: yes
+
+- name: Configure systemd
+  block:
+    - name: Create systemd conf directory
+      file:
+        dest: /etc/systemd/system.conf.d
+        state: directory
+
+    - name: Configure timeouts
+      copy:
+        src: files/systemd-timeout.conf
+        dest: /etc/systemd/system.conf.d/00-timeout.conf
+        mode: 0644
+  become: yes
+
+- name: Configure vconsole.conf
+  template:
+    src: templates/vconsole.conf.j2
+    dest: /etc/vconsole.conf
+    mode: 0644
+  become: yes
+
+- name: Enable fstrim service
+  systemd:
+    name: fstrim.timer
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Enable systemd-timesyncd
+  command: timedatectl set-ntp on
+  become: yes
+
+- name: Enable coloured output for pacman tools
+  replace:
+    path: /etc/pacman.conf
+    regexp: '^#Color$'
+    replace: 'Color'
+  become: yes
+  when: configuration_pacman_colour
+
+- name: Configure journald retention policy
+  block:
+    - name: Add configuration file
+      copy:
+        src: files/journald-rotation.conf
+        dest: /etc/systemd/journald.conf.d/rotation.conf
+        mode: 0644
+
+    - name: Restart journald
+      systemd:
+        name: systemd-journald
+        state: restarted
+        enabled: yes
+        scope: system
+  become: yes
+
+- name: Configure xorg keyboard rules
+  copy:
+    src: files/xorg-keyboard.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+    mode: 0644
+  become: yes
+
+- name: Configure xorg touchpad rules
+  copy:
+    src: files/xorg-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/00-touchpad.conf
+    mode: 0644
+  become: yes
