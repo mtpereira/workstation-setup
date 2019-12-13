@@ -1,0 +1,38 @@
+---
+- name: Install bluetooth packages
+  pacman:
+    name:
+      - bluez
+      - bluez-utils
+      - pulseaudio-bluetooth
+    state: present
+  become: yes
+
+- name: Enable bluetooth service
+  systemd:
+    name: bluetooth
+    state: started
+    enabled: yes
+    scope: system
+  become: yes
+
+- name: Configure pulseaudio for bluetooth
+  copy:
+    src: files/bluetooth/default.pa
+    dest: "{{ ansible_user_dir }}/.config/pulse/default.pa"
+    mode: 0644
+    owner: "{{ ansible_user_id }}"
+
+- name: Reload pulseaudio
+  systemd:
+    name: pulseaudio
+    state: restarted
+    scope: user
+
+- name: Enable/disable bluetooth on resume/suspend
+  copy:
+    src: files/bluetooth/system-sleep.sh
+    dest: /usr/lib/systemd/system-sleep/system-sleep.sh
+    mode: 0744
+    owner: root
+  become: yes

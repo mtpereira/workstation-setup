@@ -236,3 +236,6 @@
         enabled: yes
         scope: system
   become: yes
+
+- name: Setup bluetooth
+  include: tasks/bluetooth.yml
