@@ -34,15 +34,16 @@ install_packages:
   - gnome-keyring
   - gnupg
   - go
-  - httpie
   - htop
+  - httpie
+  - i3-wm
   - i3lock
   - i3status
-  - i3-wm
   - imagemagick
   - inetutils
   - intellij-idea-community-edition
   - iputils
+  - iw
   - jq
   - keepassxc
   - keychain
@@ -63,10 +64,12 @@ install_packages:
   - nmap
   - openbsd-netcat
   - openssh
+  - otf-font-awesome
   - patch
   - pavucontrol
   - pkgfile
   - postgresql-libs
+  - powerline-fonts
   - powertop
   - pulseaudio
   - pulseaudio-alsa
@@ -112,23 +115,24 @@ install_packages:
   - zsh
 
 install_aur_packages:
-  - exercism
-  - dropbox
   - dep-bin
+  - dropbox
+  - exercism
+  - goland
+  - goland-jre
+  - i3status-rust
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
-  - goland
-  - goland-jre
   - minikube-bin
   - openvpn-update-systemd-resolved
   - redshift-minimal
   - restic
   - signal-desktop-bin
   - slack-desktop
+  - spotify
   - texlive-moderncv-git
   - tmux-xpanes
-  - spotify
   - yay
   - zoom
 
