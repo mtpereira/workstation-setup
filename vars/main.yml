@@ -121,6 +121,7 @@ install_aur_packages:
   - goland
   - goland-jre
   - i3status-rust
+  - j4-dmenu-desktop
   - keybase-bin
   - kubectl-bin
   - kubernetes-helm
