@@ -46,11 +46,19 @@
 
 - name: Block incoming connections
   block:
-    - ufw:
+    - name: Reset ufw
+      ufw:
         state: reset
-    - ufw:
+    - name: Deny incoming connections
+      ufw:
         default: deny
         direction: incoming
         log: no
         state: enabled
+    - name: Enable ufw
+      systemd:
+        name: ufw
+        scope: system
+        enabled: yes
+        state: started
   become: yes
