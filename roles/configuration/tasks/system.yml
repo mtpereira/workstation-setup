@@ -24,7 +24,7 @@
 
 - name: Configure logind
   copy:
-    src: files/logind.conf
+    src: files/system/logind.conf
     dest: /etc/systemd/logind.conf
     mode: 0644
   become: yes
@@ -38,7 +38,7 @@
 
     - name: Configure timeouts
       copy:
-        src: files/systemd-timeout.conf
+        src: files/system/systemd-timeout.conf
         dest: /etc/systemd/system.conf.d/00-timeout.conf
         mode: 0644
   become: yes
@@ -73,7 +73,7 @@
   block:
     - name: Add configuration file
       copy:
-        src: files/journald-rotation.conf
+        src: files/system/journald-rotation.conf
         dest: /etc/systemd/journald.conf.d/rotation.conf
         mode: 0644
 
@@ -87,14 +87,14 @@
 
 - name: Configure xorg keyboard rules
   copy:
-    src: files/xorg-keyboard.conf
+    src: files/system/xorg-keyboard.conf
     dest: /etc/X11/xorg.conf.d/00-keyboard.conf
     mode: 0644
   become: yes
 
 - name: Configure xorg touchpad rules
   copy:
-    src: files/xorg-touchpad.conf
+    src: files/system/xorg-touchpad.conf
     dest: /etc/X11/xorg.conf.d/00-touchpad.conf
     mode: 0644
   become: yes

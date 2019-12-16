@@ -25,7 +25,7 @@
 
 - name: Copy wallpaper
   copy:
-    src: files/wallpaper.png
+    src: files/user/wallpaper.png
     dest: "{{ configuration_wallpaper_path }}"
     mode: 0644
 
@@ -53,7 +53,7 @@
 
     - name: Add systemd unit
       file:
-        src: files/headphones_hissing.service
+        src: files/user/headphones_hissing.service
         dest: "{{ ansible_user_dir }}/.config/systemd/user/headphones_hissing.service"
         mode: 0644
 
