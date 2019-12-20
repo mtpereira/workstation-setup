@@ -31,8 +31,8 @@
 
 - name: Enable/disable bluetooth on resume/suspend
   copy:
-    src: files/bluetooth/system-sleep.sh
-    dest: /usr/lib/systemd/system-sleep/system-sleep.sh
+    src: files/bluetooth/bluetooth-sleep.sh
+    dest: /usr/lib/systemd/system-sleep/bluetooth-sleep.sh
     mode: 0744
     owner: root
   become: yes
