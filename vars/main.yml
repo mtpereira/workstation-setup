@@ -127,6 +127,7 @@ install_aur_packages:
   - kubernetes-helm
   - minikube-bin
   - openvpn-update-systemd-resolved
+  - protonvpn-cli-ng
   - redshift-minimal
   - restic
   - signal-desktop-bin
