@@ -98,3 +98,12 @@
     dest: /etc/X11/xorg.conf.d/00-touchpad.conf
     mode: 0644
   become: yes
+
+# Electron applications' GUI is freezing arbitrarily.
+# Found at https://unix.stackexchange.com/a/529362
+- name: Workaround electron freeze issue
+  copy:
+    src: files/system/electron-freeze-workaround.conf
+    dest: /etc/X11/xorg.conf.d/20-intel.conf
+    mode: 0644
+  become: yes
