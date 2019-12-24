@@ -118,6 +118,7 @@ install_aur_packages:
   - dep-bin
   - dropbox
   - exercism
+  - glow
   - goland
   - goland-jre
   - i3status-rust
