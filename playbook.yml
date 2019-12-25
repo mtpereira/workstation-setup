@@ -14,10 +14,3 @@
       tags: configuration
     - role: dotfiles
       tags: dotfiles
-    - role: firewall
-      become: yes
-      tags: firewall
-
-# TODO
-# - Add powerline fonts https://github.com/powerline/fonts
-

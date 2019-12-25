@@ -1,20 +1,25 @@
 ---
 - name: Configure DNS
   block:
+    - name: Configure systemd-resolved
+      copy:
+        src: files/network/systemd-resolved.conf
+        dest: /etc/systemd/resolved.conf
+        mode: 0644
+        owner: root
+
     - name: Configure search path resolution with systemd-resolved
       file:
         src: /run/systemd/resolve/resolv.conf
         dest: /etc/resolve.conf
         force: yes
         state: link
-      become: yes
 
-    - name: Enable systemd-resolved
+    - name: Enable and reload systemd-resolved
       systemd:
         name: systemd-resolved
         enabled: yes
-        state: started
-      become: yes
+        state: restarted
 
     - name: Configure dhcpcd
       copy:
@@ -23,13 +28,12 @@
         mode: 0644
         owner: root
         state: present
-      become: yes
 
     - name: Load dhcpcd configuration
       systemd:
         name: dhcpcd
         state: restarted
-      become: yes
+  become: yes
 
 - name: Disable IPv6
   sysctl:
