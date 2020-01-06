@@ -105,7 +105,6 @@ install_packages:
   - wget
   - which
   - whois
-  - wpa_actiond
   - xf86-video-intel
   - xorg
   - xorg-xbacklight
@@ -115,9 +114,7 @@ install_packages:
   - zsh
 
 install_aur_packages:
-  - dep-bin
   - dropbox
-  - exercism
   - glow
   - goland
   - goland-jre
@@ -136,6 +133,7 @@ install_aur_packages:
   - spotify
   - texlive-moderncv-git
   - tmux-xpanes
+  - wpa_actiond
   - yay
   - zoom
 
