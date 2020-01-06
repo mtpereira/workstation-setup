@@ -52,7 +52,7 @@
       become: yes
 
     - name: Add systemd unit
-      file:
+      copy:
         src: files/user/headphones_hissing.service
         dest: "{{ ansible_user_dir }}/.config/systemd/user/headphones_hissing.service"
         mode: 0644

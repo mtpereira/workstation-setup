@@ -11,7 +11,7 @@
     - name: Configure search path resolution with systemd-resolved
       file:
         src: /run/systemd/resolve/resolv.conf
-        dest: /etc/resolve.conf
+        dest: /etc/resolv.conf
         force: yes
         state: link
 
@@ -27,7 +27,6 @@
         dest: /etc/dhcpcd.conf
         mode: 0644
         owner: root
-        state: present
 
     - name: Load dhcpcd configuration
       systemd:

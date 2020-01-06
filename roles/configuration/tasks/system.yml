@@ -71,6 +71,13 @@
 
 - name: Configure journald retention policy
   block:
+    - name: Create the journald.conf.d directory
+      file:
+        path: /etc/systemd/journald.conf.d
+        state: directory
+        mode: 0755
+        owner: root
+
     - name: Add configuration file
       copy:
         src: files/system/journald-rotation.conf
