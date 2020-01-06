@@ -19,8 +19,3 @@
     src: "desktop/"
     dest: "{{ ansible_user_dir }}/.local/share/applications/"
 
-- name: Copy container wrappers
-  synchronize:
-    src: "containers/"
-    dest: "{{ ansible_user_dir }}/.containers/"
-
