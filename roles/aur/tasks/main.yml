@@ -11,29 +11,6 @@
     state: present
   become: yes
 
-- name: Check if cower is installed
-  command: pacman -Q cower
-  failed_when: no
-  changed_when: no
-  register: aur_cower_installed
-
-- block:
-  - name: Create the AUR build directory
-    file:
-      dest: "{{ aur_build_dir }}/cower/"
-      state: directory
-
-  - name: Fetch cower
-    get_url:
-      url: https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
-      dest: "{{ aur_build_dir }}/cower/"
-
-  - name: Install cower
-    command: makepkg PKGBUILD --install --needed --noconfirm --noprogressbar
-    args:
-      chdir: "{{ aur_build_dir }}/cower/"
-  when: aur_cower_installed.rc != 0
-
 - name: Check if the AUR helper {{ aur_helper }} is installed
   command: pacman -Q "{{ aur_helper }}"
   failed_when: no
@@ -43,17 +20,17 @@
 - block:
   - name: Create the AUR build directory
     file:
-      dest: "{{ aur_build_dir }}/yay/"
+      dest: "{{ aur_build_dir }}/{{ aur_helper }}"
       state: directory
 
   - name: Fetch the AUR helper {{ aur_helper }}
     get_url:
-      url: https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay
-      dest: "{{ aur_build_dir }}/yay/"
+      url: "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h={{ aur_helper }}"
+      dest: "{{ aur_build_dir }}/{{ aur_helper }}"
 
   - name: Install the AUR helper {{ aur_helper }}
     command: makepkg PKGBUILD --install --needed --noconfirm --noprogressbar
     args:
-      chdir: "{{ aur_build_dir }}/yay/"
+      chdir: "{{ aur_build_dir }}/{{ aur_helper }}/"
   when: aur_helper_installed.rc != 0
 
