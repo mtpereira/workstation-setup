@@ -15,16 +15,24 @@
   become: yes
 
 - name: Install packages
-  pacman:
-    name: "{{ install_packages }}"
-    update_cache: yes
-    state: present
-  become: yes
+  block:
+    - set_fact:
+        install_packages: "{{ install_packages + install_host_packages }}"
+
+    - pacman:
+        name: "{{ install_packages }}"
+        update_cache: yes
+        state: present
+      become: yes
 
 - name: Install AUR packages
-  aur:
-    name: "{{ item }}"
-  with_items: "{{ install_aur_packages }}"
+  block:
+    - set_fact:
+        install_aur_packages: "{{ install_aur_packages + install_host_aur_packages }}"
+
+    - aur:
+        name: "{{ item }}"
+      with_items: "{{ install_aur_packages }}"
 
 - name: Install rbenv
   git:
