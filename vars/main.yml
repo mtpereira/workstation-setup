@@ -145,6 +145,10 @@ configuration_user_dirs:
   - "{{ ansible_user_dir }}/scripts"
   - "{{ ansible_user_dir }}/Pictures/screenshots"
 
+configuration_user_symlinks:
+  - destination: "{{ ansible_user_dir }}/notes"
+    source: "{{ ansible_user_dir }}/Dropbox/notes"
+
 configuration_user_shell: "/bin/zsh"
 configuration_mpd_enabled: no
 configuration_pacman_colour: yes

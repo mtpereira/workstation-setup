@@ -5,6 +5,14 @@
     state: directory
   with_items: "{{ configuration_user_dirs }}"
 
+- name: Create symlinks
+  file:
+    src: "{{ item.source }}"
+    dest: "{{ item.destination }}"
+    state: link
+  with_items: "{{ configuration_user_symlinks }}"
+  tags: test
+
 - name: Change user shell
   user:
     name: "{{ ansible_user_id }}"
