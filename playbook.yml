@@ -5,6 +5,10 @@
   vars_files:
     - vars/main.yml
 
+  pre_tasks:
+    - include_vars: "vars/{{ ansible_hostname }}.yml"
+      tags: install
+
   roles:
     - role: aur
       tags: aur
