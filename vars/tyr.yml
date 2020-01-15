@@ -1,15 +1,21 @@
 ---
 install_host_packages:
   - hunspell
+<<<<<<< HEAD
   - vault
+=======
+>>>>>>> Add multi-host support on the install role
 
 install_host_aur_packages:
   - amazon-ecr-credential-helper
   - gh
   - jsonnet
   - libmysqlclient
+<<<<<<< HEAD
 
 install_asdf_plugins:
   - terraform
 
 configuration_mpd_enabled: yes
+=======
+>>>>>>> Add multi-host support on the install role
