@@ -1,0 +1,3 @@
+---
+install_host_packages:
+  - xf86-video-intel
