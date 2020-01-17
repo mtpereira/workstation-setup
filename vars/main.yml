@@ -81,6 +81,7 @@ install_packages:
   - rsync
   - rxvt-unicode
   - scrot
+  - signal-desktop
   - strace
   - tcpdump
   - terminus-font
@@ -128,7 +129,6 @@ install_aur_packages:
   - protonvpn-cli-ng
   - redshift-minimal
   - restic
-  - signal-desktop-bin
   - slack-desktop
   - spotify
   - texlive-moderncv-git
@@ -150,6 +150,7 @@ configuration_user_symlinks:
     source: "{{ ansible_user_dir }}/Dropbox/notes"
 
 configuration_user_shell: "/bin/zsh"
+
 configuration_mpd_enabled: no
 configuration_pacman_colour: yes
 
