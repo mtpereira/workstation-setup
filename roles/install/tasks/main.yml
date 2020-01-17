@@ -68,4 +68,3 @@
     url: "https://github.com/shyiko/ktlint/releases/download/{{ install_ktlint_version }}/ktlint"
     dest: "{{ ansible_user_dir }}/bin"
     mode: 0755
-
