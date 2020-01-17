@@ -106,7 +106,6 @@ install_packages:
   - wget
   - which
   - whois
-  - xf86-video-intel
   - xorg
   - xorg-xbacklight
   - xsel
