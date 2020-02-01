@@ -50,6 +50,7 @@ install_packages:
   - lftp
   - libnotify
   - libva-intel-driver
+  - light
   - lightdm
   - lightdm-gtk-greeter
   - lsof
