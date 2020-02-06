@@ -1,0 +1,14 @@
+# Ansible managed, do not edit!
+
+pidfile = {{ ansible_user_dir }}/.mpdscribble/pid
+daemon_user = {{ ansible_user_id }}
+verbose = 1
+journal = {{ ansible_user_dir }}/.mpdscribble/journal
+journal_interval = 60
+host = localhost
+port = 6600
+
+[last.fm]
+url = http://post.audioscrobbler.com/
+username = USERNAME
+password = PASSWORD
