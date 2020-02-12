@@ -7,7 +7,11 @@
 
   pre_tasks:
     - include_vars: "vars/{{ ansible_hostname }}.yml"
-      tags: install,configuration,configure-mpd
+      tags:
+      - install
+      - install-asdf
+      - configuration
+      - configure-mpd
 
   roles:
     - role: aur
