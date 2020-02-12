@@ -5,6 +5,10 @@ install_host_packages:
 
 install_host_aur_packages:
   - amazon-ecr-credential-helper
+  - jsonnet
   - libmysqlclient
+
+install_asdf_plugins:
+  - terraform
 
 configuration_mpd_enabled: yes
