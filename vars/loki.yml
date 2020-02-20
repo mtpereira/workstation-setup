@@ -3,3 +3,4 @@ install_host_packages:
   - vulkan-intel
 
 configuration_mpd_enabled: yes
+configuration_wallpaper: wallpaper-loki.png
