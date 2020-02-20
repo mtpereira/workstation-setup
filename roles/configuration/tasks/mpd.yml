@@ -1,12 +1,16 @@
 ---
 - name: Install mpd packages
-  pacman:
-    name:
-      - mpc
-      - mpd
-      - mpdscribble
-      - ncmpcpp
-  become: yes
+  block:
+    - pacman:
+        name:
+          - mpc
+          - mpd
+          - ncmpcpp
+      become: yes
+
+    - aur:
+        name:
+          - mpdscribble
 
 - name: Create mpd directories
   file:
@@ -47,5 +51,5 @@
 
     - template:
         src: templates/mpdscribble.conf.j2
-        dest: "{{ ansible_user_dir }}/.mpdsribble/mpdscribble.conf"
+        dest: "{{ ansible_user_dir }}/.mpdscribble/mpdscribble.conf"
         mode: 0644
