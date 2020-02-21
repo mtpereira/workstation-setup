@@ -13,3 +13,4 @@ install_asdf_plugins:
   - terraform
 
 configuration_mpd_enabled: yes
+configuration_wallpaper: wallpaper-tyr.png
