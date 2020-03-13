@@ -1,6 +1,7 @@
 ---
 install_host_packages:
   - hunspell
+  - seahorse
   - vault
 
 install_host_aur_packages:
