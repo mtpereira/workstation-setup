@@ -1,6 +1,18 @@
 ---
 install_host_packages:
+  - abcde
+  - cd-discid
+  - cdparanoia
+  - flac
+  - glyr
+  - lame
+  - python-eyed3
+  - recode
   - vulkan-intel
+
+install_host_aur_packages:
+  - perl-musicbrainz-discid
+  - perl-webservice-musicbrainz
 
 configuration_mpd_enabled: yes
 configuration_wallpaper: wallpaper-loki.png
