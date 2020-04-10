@@ -1,6 +1,7 @@
 #!/bin/sh
 
-{% for command in configuration_xsession_commands %}
-{{ command }}
-{% endfor %}
+xrdb -load "{{ ansible_user_dir }}/.Xresources"
+feh --bg-max "{{ configuration_wallpaper_path }}"
+xrandr --output DP-1 --auto --left-of eDP-1 --primary
+exec i3
 
