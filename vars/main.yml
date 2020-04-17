@@ -12,6 +12,7 @@ install_packages:
   - aws-cli
   - bat
   - bind-tools
+  - broot
   - cmake
   - code
   - coreutils
