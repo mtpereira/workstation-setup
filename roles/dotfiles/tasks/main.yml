@@ -20,8 +20,8 @@
     dest: "{{ ansible_user_dir }}/.local/share/applications/"
 
 - name: Copy abcde config
-    copy:
-      src: "files/.abcde.conf"
-      dest: "{{ ansible_user_dir }}/.abcde.conf"
-      owner: "{{ ansible_user }}"
-      mode: 0644
+  copy:
+    src: "files/.abcde.conf"
+    dest: "{{ ansible_user_dir }}/.abcde.conf"
+    owner: "{{ ansible_user }}"
+    mode: 0644
