@@ -157,6 +157,8 @@ configuration_vconsole_font: "ter-u16b"
 configuration_vconsole_keymap: "us"
 configuration_wallpaper_path: "{{ ansible_user_dir }}/.wallpaper.png"
 
+configuration_system_dpms_disabled: no
+
 firewall_allowed_tcp_ports: []
 firewall_allowed_udp_ports: []
 firewall_forwarded_tcp_ports: []

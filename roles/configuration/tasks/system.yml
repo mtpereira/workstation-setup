@@ -106,6 +106,14 @@
     mode: 0644
   become: yes
 
+- name: Disable DPMS
+  copy:
+    src: files/system/xorg-dpms.conf
+    dest: /etc/X11/xorg.conf.d/10-dpms.conf
+    mode: 0644
+  become: yes
+  when: configuration_system_dpms_disabled
+
 - name: Configure sudoers for network tools
   template:
     src: templates/sudoers-network.j2

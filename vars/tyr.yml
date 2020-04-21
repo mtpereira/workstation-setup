@@ -15,3 +15,4 @@ install_asdf_plugins:
 
 configuration_mpd_enabled: yes
 configuration_wallpaper: wallpaper-tyr.png
+configuration_system_dpms_disabled: yes
