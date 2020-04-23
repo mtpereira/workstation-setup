@@ -1,23 +1,23 @@
 ---
 - name: Configure DNS
   block:
-    - name: Configure systemd-resolved
+    - name: Configure dnsmasq
       copy:
-        src: files/network/systemd-resolved.conf
-        dest: /etc/systemd/resolved.conf
+        src: files/network/dnsmasq.conf
+        dest: /etc/dnsmasq.conf
         mode: 0644
         owner: root
 
-    - name: Configure search path resolution with systemd-resolved
-      file:
-        src: /run/systemd/resolve/resolv.conf
+    - name: Configure resolv.conf for dnsmasq
+      copy:
+        src: files/network/resolv.conf
         dest: /etc/resolv.conf
-        force: yes
-        state: link
+        owner: root
+        mode: 0644
 
-    - name: Enable and reload systemd-resolved
+    - name: Enable and reload dnsmasq
       systemd:
-        name: systemd-resolved
+        name: dnsmasq
         enabled: yes
         state: restarted
 
@@ -33,6 +33,27 @@
         name: dhcpcd
         state: restarted
   become: yes
+
+- name: Install and setup maza
+  block:
+    - set_fact:
+        configuration_maza_path: "{{ ansible_user_dir }}/bin/maza"
+
+    - name: Install maza
+      copy:
+        src: files/network/maza.sh
+        dest: "{{ configuration_maza_path }}"
+        mode: 0755
+
+    - name: Configure maza blacklist
+      command: "{{ configuration_maza_path }} start"
+      become: yes
+
+    - name: Reload dnsmasq
+      systemd:
+        name: dnsmasq
+        state: reloaded
+      become: yes
 
 - name: Disable IPv6
   sysctl:

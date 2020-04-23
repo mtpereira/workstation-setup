@@ -20,6 +20,7 @@ install_packages:
   - dhcpcd
   - diff-so-fancy
   - dmenu
+  - dnsmasq
   - docker
   - docker-compose
   - dos2unix
