@@ -68,6 +68,7 @@ install_packages:
   - patch
   - pavucontrol
   - pkgfile
+  - playerctl
   - postgresql-libs
   - powerline-fonts
   - powertop
