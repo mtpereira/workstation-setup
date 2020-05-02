@@ -54,6 +54,7 @@
         name: dnsmasq
         state: reloaded
       become: yes
+  when: configuration_maza_enabled
 
 - name: Disable IPv6
   sysctl:

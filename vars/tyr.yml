@@ -13,6 +13,7 @@ install_host_aur_packages:
 install_asdf_plugins:
   - terraform
 
+configuration_maza_enabled: no
 configuration_mpd_enabled: yes
 configuration_wallpaper: wallpaper-tyr.png
 configuration_system_dpms_disabled: yes
