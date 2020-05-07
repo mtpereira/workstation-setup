@@ -32,7 +32,6 @@ install_packages:
   - firefox-i18n-pt-pt
   - fzf
   - git
-  - glide
   - gnome-keyring
   - gnupg
   - go
