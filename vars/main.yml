@@ -101,8 +101,6 @@ install_packages:
   - vim
   - vim-spell-en
   - vim-spell-pt
-  - virtualbox
-  - virtualbox-host-modules-arch
   - vlc
   - wget
   - which
