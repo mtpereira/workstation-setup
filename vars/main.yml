@@ -42,6 +42,7 @@ install_packages:
   - i3status
   - imagemagick
   - inetutils
+  - intel-ucode
   - intellij-idea-community-edition
   - iputils
   - iw
@@ -54,6 +55,8 @@ install_packages:
   - light
   - lightdm
   - lightdm-gtk-greeter
+  - linux
+  - linux-firmware
   - lsof
   - make
   - mercurial
