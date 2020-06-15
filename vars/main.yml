@@ -139,6 +139,7 @@ install_aur_packages:
 
 install_ktlint_version: 0.32.0
 
+configuration_dpi: 120
 configuration_maza_enabled: yes
 configuration_mpd_enabled: no
 configuration_user_dirs:

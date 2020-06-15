@@ -2,6 +2,7 @@
 
 xrdb -load "{{ ansible_user_dir }}/.Xresources"
 xrandr --output DP-1 --auto --left-of eDP-1 --primary
-~/.fehbg
+xrandr --dpi "{{ configuration_dpi }}"
+feh --bg-max "{{ configuration_wallpaper_path }}"
 exec i3
 
