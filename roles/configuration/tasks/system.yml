@@ -122,3 +122,12 @@
     mode: 0440
     validate: /usr/bin/visudo -cf %s
   become: yes
+
+- name: Configure Logitech webcam zoom
+  file:
+    src: files/system/99-logitech-default-zoom.rules
+    dest: /etc/udev/rules.d/
+    owner: root
+    mode: 0644
+  become: yes
+
