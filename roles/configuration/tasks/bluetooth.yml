@@ -19,15 +19,16 @@
 - name: Configure pulseaudio for bluetooth
   block:
     - file:
-        path: "{{ ansible_user_dir }}/.config/pulse"
+        path: "/etc/pulse/default.pa.d"
         state: directory
         mode: 0755
-        owner: "{{ ansible_user_id }}"
+        owner: root
     - copy:
         src: files/bluetooth/default.pa
-        dest: "{{ ansible_user_dir }}/.config/pulse/default.pa"
+        dest: "/etc/pulse/default.pa.d/bluetooth.pa"
         mode: 0644
-        owner: "{{ ansible_user_id }}"
+        owner: root
+  become: yes
 
 - name: Reload pulseaudio
   systemd:
