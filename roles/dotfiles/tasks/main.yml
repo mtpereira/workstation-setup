@@ -3,7 +3,7 @@
   git:
     repo: ssh://git@github.com/mtpereira/dotfiles.git
     dest: "{{ ansible_user_dir }}/.dotfiles"
-    version: master
+    version: main
     accept_hostkey: yes
 
 - name: Install dotfiles
