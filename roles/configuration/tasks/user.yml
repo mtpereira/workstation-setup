@@ -42,6 +42,8 @@
     user: yes
     enabled: yes
     state: started
+  when: '"dropbox" in install_host_aur_packages'
+  tags: tests
 
 - name: Enable redshift
   systemd:

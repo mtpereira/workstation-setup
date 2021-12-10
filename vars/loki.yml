@@ -11,8 +11,14 @@ install_host_packages:
   - vulkan-intel
 
 install_host_aur_packages:
+  - dropbox
   - perl-musicbrainz-discid
   - perl-webservice-musicbrainz
 
 configuration_mpd_enabled: yes
 configuration_wallpaper: wallpaper-loki.png
+
+
+configuration_user_symlinks:
+  - destination: "{{ ansible_user_dir }}/notes"
+    source: "{{ ansible_user_dir }}/Dropbox/notes"

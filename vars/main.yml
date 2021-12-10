@@ -115,7 +115,6 @@ install_packages:
   - zsh
 
 install_aur_packages:
-  - dropbox
   - glow
   - goland
   - goland-jre
@@ -146,9 +145,6 @@ configuration_user_dirs:
   - "{{ ansible_user_dir }}/scripts"
   - "{{ ansible_user_dir }}/Pictures/screenshots"
 configuration_user_shell: "/bin/zsh"
-configuration_user_symlinks:
-  - destination: "{{ ansible_user_dir }}/notes"
-    source: "{{ ansible_user_dir }}/Dropbox/notes"
 configuration_pacman_colour: yes
 configuration_system_dpms_disabled: no
 configuration_vconsole_font: "ter-u16b"

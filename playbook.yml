@@ -12,6 +12,7 @@
       - install-asdf
       - configuration
       - configure-mpd
+      - tests
 
   roles:
     - role: aur
