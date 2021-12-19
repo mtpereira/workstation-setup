@@ -87,3 +87,12 @@
         enabled: yes
         state: started
   become: yes
+
+- name: Configure sudoers for network tools
+  template:
+    src: templates/sudoers-network.j2
+    dest: /etc/sudoers.d/network
+    owner: root
+    mode: 0440
+    validate: /usr/bin/visudo -cf %s
+  become: yes

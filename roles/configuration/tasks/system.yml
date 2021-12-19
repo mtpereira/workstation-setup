@@ -114,15 +114,6 @@
   become: yes
   when: configuration_system_dpms_disabled
 
-- name: Configure sudoers for network tools
-  template:
-    src: templates/sudoers-network.j2
-    dest: /etc/sudoers.d/network
-    owner: root
-    mode: 0440
-    validate: /usr/bin/visudo -cf %s
-  become: yes
-
 - name: Configure Logitech webcam zoom
   file:
     src: files/system/99-logitech-default-zoom.rules
