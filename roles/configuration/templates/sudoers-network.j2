@@ -1,3 +1,4 @@
 # Ansible managed, do not edit!
 {{ ansible_user_id }} {{ ansible_hostname }} = (root) NOPASSWD: /usr/bin/netctl
-{{ ansible_user_id }} {{ ansible_hostname }} = (root) NOPASSWD: SETENV: /usr/bin/protonvpn
+{{ ansible_user_id  }} {{ ansible_hostname }} = (root) NOPASSWD: /usr/bin/systemctl restart openvpn-client@protonvpn.service
+{{ ansible_user_id  }} {{ ansible_hostname }} = (root) NOPASSWD: /usr/bin/systemctl stop openvpn-client@protonvpn.service

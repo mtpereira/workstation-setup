@@ -66,6 +66,7 @@ install_packages:
   - nmap
   - openbsd-netcat
   - openssh
+  - openvpn
   - otf-font-awesome
   - patch
   - pavucontrol
@@ -123,7 +124,6 @@ install_aur_packages:
   - kubectl-bin
   - kubernetes-helm
   - minikube-bin
-  - protonvpn-cli-ng
   - redshift-minimal
   - restic
   - slack-desktop
