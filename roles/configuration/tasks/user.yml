@@ -71,3 +71,10 @@
         enabled: yes
         scope: user
         daemon_reload: yes
+
+- name: Enable Live Share on Code
+  copy:
+    src: files/user/code-oss.desktop
+    dest: "{{ ansible_user_dir }}/.local/share/applications/code-oss.desktop"
+    mode: 0644
+  when: '"code" in install_packages'
