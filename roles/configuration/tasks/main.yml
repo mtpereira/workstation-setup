@@ -1,21 +1,21 @@
 ---
 - name: Configure system
-  include: tasks/system.yml
+  include_tasks: tasks/system.yml
   tags: configure-system
 
 - name: Configure user
-  include: tasks/user.yml
+  include_tasks: tasks/user.yml
   tags: configure-user
 
 - name: Configure mpd and ncmpcpp
-  include: tasks/mpd.yml
+  include_tasks: tasks/mpd.yml
   when: configuration_mpd_enabled
   tags: configure-mpd
 
 - name: Configure network
-  include: tasks/network.yml
+  include_tasks: tasks/network.yml
   tags: configure-network
 
 - name: Setup bluetooth
-  include: tasks/bluetooth.yml
+  include_tasks: tasks/bluetooth.yml
   tags: configure-bluetooth

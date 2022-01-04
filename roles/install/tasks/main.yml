@@ -78,5 +78,5 @@
     mode: 0755
 
 - name: Install asdf
-  include: tasks/asdf.yml
+  include_tasks: tasks/asdf.yml
   tags: install-asdf
