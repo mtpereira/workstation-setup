@@ -14,7 +14,6 @@ install_packages:
   - bind-tools
   - broot
   - cmake
-  - code
   - coreutils
   - curl
   - dhcpcd
@@ -130,6 +129,7 @@ install_aur_packages:
   - spotify
   - texlive-moderncv-git
   - tmux-xpanes
+  - visual-studio-code-bin
   - wpa_actiond
   - yay
   - zoom
