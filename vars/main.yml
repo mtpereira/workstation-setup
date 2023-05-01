@@ -110,6 +110,7 @@ install_packages:
   - whois
   - xorg
   - xorg-xbacklight
+  - xpdf
   - xsel
   - yarn
   - zip
