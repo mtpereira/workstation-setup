@@ -88,6 +88,7 @@ install_packages:
   - tcpdump
   - terminus-font
   - terraform
+  - thermald
   - the_silver_searcher
   - tmux
   - traceroute
