@@ -118,8 +118,6 @@ install_packages:
 
 install_aur_packages:
   - glow
-  - goland
-  - goland-jre
   - i3status-rust
   - j4-dmenu-desktop
   - kubectl-bin
@@ -128,7 +126,6 @@ install_aur_packages:
   - redshift-minimal
   - restic
   - slack-desktop
-  - spotify
   - texlive-moderncv-git
   - tmux-xpanes
   - visual-studio-code-bin

@@ -115,7 +115,7 @@
   when: configuration_system_dpms_disabled
 
 - name: Configure Logitech webcam zoom
-  file:
+  copy:
     src: files/system/99-logitech-default-zoom.rules
     dest: /etc/udev/rules.d/
     owner: root

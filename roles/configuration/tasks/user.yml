@@ -39,14 +39,14 @@
 - name: Enable dropbox
   systemd:
     name: dropbox
-    user: yes
+    scope: user
     enabled: yes
   when: '"dropbox" in install_host_aur_packages'
 
 - name: Enable redshift
   systemd:
     name: redshift
-    user: yes
+    scope: user
     enabled: yes
     state: started
 

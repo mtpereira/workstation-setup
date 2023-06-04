@@ -7,7 +7,6 @@ install_host_packages:
   - flac
   - glyr
   - lame
-  - python-eyed3
   - recode
   - vulkan-intel
 
@@ -17,6 +16,7 @@ install_host_aur_packages:
   - openvpn-update-resolv-conf-git
   - perl-musicbrainz-discid
   - perl-webservice-musicbrainz
+  - python-eyed3
 
 configuration_mpd_enabled: yes
 configuration_wallpaper: wallpaper-loki.png

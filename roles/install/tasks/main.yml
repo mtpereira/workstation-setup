@@ -1,7 +1,7 @@
 ---
 - name: Get mirrorlist
   uri:
-    url: https://www.archlinux.org/mirrorlist/
+    url: https://archlinux.org/mirrorlist/
     method: POST
     body: "country=PT&protocol=https&ip_version=4&use_mirror_status=on"
     return_content: yes
