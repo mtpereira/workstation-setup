@@ -3,6 +3,7 @@ install_host_packages:
   - abcde
   - cd-discid
   - cdparanoia
+  - cpupower
   - flac
   - glyr
   - lame
@@ -11,6 +12,7 @@ install_host_packages:
   - vulkan-intel
 
 install_host_aur_packages:
+  - cpupower-gui
   - dropbox
   - openvpn-update-resolv-conf-git
   - perl-musicbrainz-discid
