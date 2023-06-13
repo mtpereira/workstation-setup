@@ -8,6 +8,7 @@ install_host_packages:
   - glyr
   - lame
   - recode
+  - rustup
   - vulkan-intel
 
 install_host_aur_packages:

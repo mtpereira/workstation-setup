@@ -63,6 +63,7 @@ install_packages:
   - mupdf
   - net-tools
   - nmap
+  - nvim
   - openbsd-netcat
   - openssh
   - openvpn
