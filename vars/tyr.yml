@@ -3,7 +3,6 @@ install_host_packages:
   - aws-sam-cli
   - hunspell
   - lens-bin
-  - obsidian-appimage
   - seahorse
   - vault
 

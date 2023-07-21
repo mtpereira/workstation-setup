@@ -64,6 +64,7 @@ install_packages:
   - net-tools
   - nmap
   - nvim
+  - obsidian
   - openbsd-netcat
   - openssh
   - openvpn
