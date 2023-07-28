@@ -57,6 +57,7 @@ install_packages:
   - linux
   - linux-firmware
   - lsof
+  - maim
   - make
   - mercurial
   - mtr
@@ -85,7 +86,6 @@ install_packages:
   - python-virtualenv
   - rsync
   - rxvt-unicode
-  - scrot
   - strace
   - tcpdump
   - terminus-font
@@ -110,6 +110,7 @@ install_packages:
   - wget
   - which
   - whois
+  - xclip
   - xorg
   - xorg-xbacklight
   - xpdf
