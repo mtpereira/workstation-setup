@@ -97,6 +97,7 @@ install_packages:
   - ttf-dejavu
   - ttf-freefont
   - ttf-hack
+  - ttf-hack-nerd
   - ttf-ubuntu-font-family
   - udevil
   - ufw
