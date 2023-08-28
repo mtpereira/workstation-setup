@@ -129,3 +129,42 @@
     enabled: yes
   become: yes
 
+- name: Fan control
+  become: true
+  block:
+    - name: Install utilities
+      community.general.pacman:
+        name:
+          - dell-bios-fan-control-git
+          - i8kutils
+          - lm_sensors
+          - thermald
+    - name: Configure fancontrol
+      ansible.builtin.copy:
+        src: files/system/fancontrol
+        dest: /etc/fancontrol
+        owner: root
+        mode: "0644"
+    - name: Enable fancontrol
+      ansible.builtin.systemd:
+        name: fancontrol
+        state: started
+        enabled: true
+    - name: Keep fancontrol running after resume
+      block:
+        - name: Setup system resume unit
+          ansible.builtin.copy:
+            src: files/system/root-resume.service
+            dest: /etc/systemd/system/root-resume.service
+            owner: root
+            mode: "0644"
+        - name: Enable system resume service
+          ansible.builtin.systemd:
+            name: root-resume
+            state: started
+            enabled: true
+            daemon-reload: true
+    - name: Disable BIOS control
+      ansible.builtin.command: dell-bios-fan-control 0
+      register: configuration_dell_bios_fan_control
+      changed_when: true
