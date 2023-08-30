@@ -139,6 +139,11 @@
           - i8kutils
           - lm_sensors
           - thermald
+    - name: Enable lm_sensors
+      ansible.builtin.systemd:
+        name: lm_sensors
+        state: started
+        enabled: true
     - name: Configure fancontrol
       ansible.builtin.copy:
         src: files/system/fancontrol
