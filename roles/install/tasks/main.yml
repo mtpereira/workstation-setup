@@ -80,3 +80,6 @@
 - name: Install asdf
   include_tasks: tasks/asdf.yml
   tags: install-asdf
+
+- name: Set buildx as the default builder
+  command: docker buildx install

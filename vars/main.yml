@@ -21,6 +21,7 @@ install_packages:
   - dmenu
   - dnsmasq
   - docker
+  - docker-buildx
   - docker-compose
   - dos2unix
   - dunst
