@@ -91,8 +91,8 @@ install_packages:
   - tcpdump
   - terminus-font
   - terraform
-  - thermald
   - the_silver_searcher
+  - thermald
   - tmux
   - traceroute
   - ttf-dejavu
@@ -116,6 +116,7 @@ install_packages:
   - xorg
   - xorg-xbacklight
   - xpdf
+  - xreader
   - xsel
   - yarn
   - zip
