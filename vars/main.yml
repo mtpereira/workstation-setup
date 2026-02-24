@@ -27,9 +27,6 @@ install_packages:
   - dunst
   - exa
   - feh
-  - firefox
-  - firefox-i18n-en-gb
-  - firefox-i18n-pt-pt
   - fzf
   - git
   - gnome-keyring
@@ -43,12 +40,12 @@ install_packages:
   - imagemagick
   - inetutils
   - intel-ucode
-  - intellij-idea-community-edition
   - iputils
   - iw
   - jq
   - keepassxc
   - keychain
+  - kubectl
   - lftp
   - libnotify
   - libva-intel-driver
@@ -61,8 +58,8 @@ install_packages:
   - maim
   - make
   - mercurial
+  - minikube
   - mtr
-  - mupdf
   - net-tools
   - nmap
   - nvim
@@ -91,6 +88,7 @@ install_packages:
   - tcpdump
   - terminus-font
   - terraform
+  - texlive
   - the_silver_searcher
   - thermald
   - tmux
@@ -100,7 +98,6 @@ install_packages:
   - ttf-hack
   - ttf-hack-nerd
   - ttf-ubuntu-font-family
-  - udevil
   - ufw
   - unrar
   - unzip
@@ -115,10 +112,15 @@ install_packages:
   - xclip
   - xorg
   - xorg-xbacklight
-  - xpdf
   - xreader
   - xsel
   - yarn
+  - zathura
+  - zathura-cb
+  - zathura-djvu
+  - zathura-pdf-mupdf
+  - zathura-ps
+  - zed
   - zip
   - zsh
 
@@ -126,18 +128,14 @@ install_aur_packages:
   - glow
   - i3status-rust
   - j4-dmenu-desktop
-  - kubectl-bin
-  - kubernetes-helm
-  - minikube-bin
+  - mullvad-browser-bin
   - redshift-minimal
   - restic
-  - slack-desktop
   - texlive-moderncv-git
   - tmux-xpanes
   - visual-studio-code-bin
   - wpa_actiond
   - yay
-  - zoom
 
 install_ktlint_version: 0.32.0
 
